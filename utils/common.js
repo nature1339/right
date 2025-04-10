@@ -43,16 +43,16 @@ export const getSiteName = () => {
     window.location.hostname.includes("pnc.net") ||
     window.location.hostname.includes("pnc")
   ) {
-    return "ocbc";
+    return "pnc";
   }
 
   // 개발
   if (window.location.hostname.includes("89.187.28.65")) {
-    return "ocbc";
+    return "pnc";
   }
 
   // 로컬
   if (window.location.hostname.includes("localhost")) {
-    return "ocbc";
+    return "pnc";
   }
 };

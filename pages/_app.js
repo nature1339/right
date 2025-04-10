@@ -14,10 +14,10 @@ import Head from "next/head";
 import HealthGuard from "@components/healthGuard";
 import Header from "@components/header";
 import clsx from "clsx";
-import "@utils/in18";
 
 import "@css/index.css";
 import "@css/mainHead.css";
+import "@utils/in18";
 import "@css/sing.css";
 import "@css/daterangepicker.css";
 
