@@ -37,6 +37,15 @@ export const getSiteName = () => {
     return "ocbc";
   }
 
+  // 피엔씨
+  if (
+    window.location.hostname.includes("pnc.com") ||
+    window.location.hostname.includes("pnc.net") ||
+    window.location.hostname.includes("pnc")
+  ) {
+    return "ocbc";
+  }
+
   // 개발
   if (window.location.hostname.includes("89.187.28.65")) {
     return "ocbc";
