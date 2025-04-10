@@ -1,0 +1,12 @@
+.dark .sign_wrap {
+  background: #181a20;
+}
+.dark h2 {
+  color: #fff;
+}
+.dark input[type=text],
+.dark input[type=number],
+.dark input[type=password] {
+  border-color: #474D57;
+  background: #2b3139 !important;
+}/*# sourceMappingURL=signDark.css.map */

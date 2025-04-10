@@ -1,0 +1,14 @@
+.dark {
+  .sign_wrap {
+      background: #181a20;
+  }
+  h2{
+      color: #fff;
+  }
+  input[type="text"],
+  input[type="number"],
+  input[type="password"] {
+      border-color: #474D57;
+      background: #2b3139 !important; 
+  }
+}

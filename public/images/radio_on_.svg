@@ -1,0 +1,28 @@
+<svg data-name="Component 192 – 1" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
+    <defs>
+        <filter id="jsomdidqja">
+            <feOffset dy="1"/>
+            <feGaussianBlur stdDeviation="1" result="blur"/>
+            <feFlood flood-color="#222636" flood-opacity=".6" result="color"/>
+            <feComposite operator="out" in="SourceGraphic" in2="blur"/>
+            <feComposite operator="in" in="color"/>
+            <feComposite operator="in" in2="SourceGraphic"/>
+        </filter>
+        <filter id="bg86gpv0yb" x="3.5" y="4.5" width="14" height="14" filterUnits="userSpaceOnUse">
+            <feOffset dy="1"/>
+            <feGaussianBlur stdDeviation=".5" result="blur-2"/>
+            <feFlood flood-color="#1f2a48" flood-opacity=".502"/>
+            <feComposite operator="in" in2="blur-2"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g data-type="innerShadowGroup">
+        <circle data-name="Ellipse 12" cx="10.5" cy="10.5" r="10.5" style="fill:#fff"/>
+        <g style="filter:url(#jsomdidqja)">
+            <circle data-name="Ellipse 12" cx="10.5" cy="10.5" r="10.5" style="fill:#fff"/>
+        </g>
+    </g>
+    <g style="filter:url(#bg86gpv0yb)">
+        <circle data-name="Ellipse 13" cx="5.5" cy="5.5" r="5.5" transform="translate(5 5)" style="fill:#176ee0"/>
+    </g>
+</svg>
