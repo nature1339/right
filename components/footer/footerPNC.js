@@ -3,7 +3,7 @@ import React from "react";
 const FooterPNC = () => {
   return (
     <footer className="bg-[#F9F9F9] py-8 border-t border-gray-200">
-      <div className="w-full max-w-[1180px] mx-auto px-4 text-sm text-gray-600">
+      <div className="w-full max-w-[1180px] mx-auto px-4 md:px-0 text-sm text-gray-600">
         <div className="flex flex-col md:flex-row justify-between items-start gap-6">
           {/* 왼쪽: 회사 정보 */}
           <div>

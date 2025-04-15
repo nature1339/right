@@ -2,8 +2,8 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header className="bg-white border-b shadow-sm py-4">
-      <div className="w-full max-w-[1180px] mx-auto px-4">
+    <header className="fixed top-0 left-0 w-full pt-0 md:pt-4 z-50">
+      <div className="w-full max-w-[1180px] mx-auto px-4 py-4 bg-white md:rounded-full shadow-md">
         <div className="flex items-center justify-between">
           {/* 왼쪽: 로고 + 메뉴 */}
           <div className="flex items-center gap-4">
@@ -56,6 +56,13 @@ const Header = () => {
             </button>
 
             {/* 햄버거 버튼 (모바일 전용) */}
+            <button className="lg:hidden flex items-center justify-center w-8 h-8">
+              <img
+                src="/assets/ic_search.png"
+                alt="Search"
+                className="w-6 h-6"
+              />
+            </button>
             <button className="lg:hidden flex items-center justify-center w-8 h-8">
               <img
                 src="/assets/menu_mobile.png"
