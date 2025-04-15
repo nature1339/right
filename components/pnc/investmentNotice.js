@@ -3,7 +3,7 @@ import React from 'react';
 const InvestmentNotice = () => {
   return (
     <section className="my-8">
-      <div className="w-full max-w-[1180px] mx-auto px-4">
+      <div className="w-full max-w-[1180px] mx-auto px-4 md:px-0">
         <div className="bg-[#F9F9F9] rounded-xl grid grid-cols-1 md:grid-cols-2 relative overflow-hidden">
 
           {/* 투자유의사항 텍스트 영역 */}

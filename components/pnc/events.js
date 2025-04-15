@@ -3,7 +3,7 @@ import React from 'react';
 const Events = () => {
   return (
     <section className="pt-6 pb-8 relative overflow-visible">
-      <div className="w-full max-w-[1180px] mx-auto px-4">
+      <div className="w-full max-w-[1180px] mx-auto px-4 md:px-0">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-3 md:gap-4 relative">
 
           {/* 카드 1 */}

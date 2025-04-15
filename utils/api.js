@@ -1,85 +1,92 @@
+import React from "react";
+import userStore from "store/user";
+import useToast from "../hooks/toast";
+//const API_URL = "http://localhost:9443/api/v1";
 const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/api/v1`;
+// const API_URL = `${window.location.origin}/api/v1`;
 
 export async function apiRequest(endpoint, options = {}, retry = false) {
+  const { userInfo, setUser, clearUser } = userStore.getState(); // Zustand에서 상태 가져오기
+
   const headers = {
     "Content-Type": "application/json",
     ...options.headers,
   };
 
-  // localStorage에서 토큰 가져오기
-  const accessToken = localStorage.getItem("accessToken");
-  if (accessToken) {
-    headers["Authorization"] = `Bearer ${accessToken}`;
+  // accessToken이 있으면 Authorization 헤더에 추가
+  if (userInfo.accessToken) {
+    headers["Authorization"] = `Bearer ${userInfo.accessToken}`;
   }
 
+  // try {
   const response = await fetch(`${API_URL}${endpoint}`, {
     ...options,
     headers,
-    credentials: "include",
+    credentials: "include", // 쿠키를 함께 전송할 경우 설정
   });
 
   if (!response.ok) {
+    // 403 Forbidden 처리: 토큰 만료로 가정
     if (response.status === 403 && !retry) {
-      console.warn("❗ 403 Forbidden - 토큰 갱신 시도");
+      console.log("403 Forbidden detected, attempting token refresh...");
 
-      const refreshed = await refreshAccessToken();
+      const refreshed = await refreshAccessToken(); // 토큰 갱신
       if (refreshed) {
-        console.log("🔁 재시도 중...");
-        return apiRequest(endpoint, options, true);
+        console.log("Token refresh successful, retrying original request...");
+        return apiRequest(endpoint, options, true); // 요청 재시도
       } else {
-        console.error("❌ 토큰 갱신 실패, 로그아웃 처리");
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
+        console.error("Token refresh failed, logging out user...");
+        clearUser(); // 상태 초기화
         throw new Error("Forbidden: Token refresh failed.");
       }
     }
 
-    const errorText = await response.text();
+    // 다른 에러 처리
     throw {
       status: response.status,
-      message: JSON.parse(errorText)?.message || errorText || "API 오류",
+      message: JSON.parse(await response.text())?.message || "",
     };
+    // throw new Error(errorText || `API 요청 실패: ${response.status}`);
+    // showToast(errorText);
   }
 
+  // JSON 응답 처리
   const contentType = response.headers.get("content-type");
-  if (contentType?.includes("application/json")) {
+  if (contentType && contentType.includes("application/json")) {
     return await response.json();
   } else {
     return await response.text();
   }
+  // } catch (error) {
+  //   console.error("API Request Error:", error);
+  //   throw error; // 에러 던지기
+  // }
 }
 
 async function refreshAccessToken() {
-  const refreshToken = localStorage.getItem("refreshToken");
-  console.log("📦 refreshToken:", refreshToken);
-
-  if (!refreshToken) {
-    return false;
-  }
+  const { userInfo, setUser } = userStore.getState();
 
   try {
     const response = await fetch(`${API_URL}/refresh`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ refreshToken }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        refreshToken: userInfo.refreshToken, // 현재 Refresh Token 사용
+      }),
     });
 
-    const text = await response.text();
     if (!response.ok) {
-      console.error("❌ refresh 응답 실패:", text);
+      console.error("토큰 갱신 실패:", await response.text());
       return false;
     }
 
-    const data = JSON.parse(text);
-    console.log("✅ refresh 성공:", data);
-
-    // localStorage 업데이트
-    localStorage.setItem("accessToken", data.accessToken);
-    localStorage.setItem("refreshToken", data.refreshToken);
-
+    const data = await response.json();
+    setUser(data.accessToken, data.refreshToken, userInfo.userid); // 새 토큰 저장
     return true;
   } catch (error) {
-    console.error("❌ refresh 요청 오류:", error);
+    console.error("토큰 갱신 중 오류:", error);
     return false;
   }
 }
@@ -96,17 +103,23 @@ export async function loginApi(userid, password, method) {
 }
 
 export async function getUserPnt() {
-  return apiRequest("/user/getPnt", { method: "GET" });
+  return apiRequest("/user/getPnt", {
+    method: "GET",
+  });
 }
 
 export async function getExc() {
-  return apiRequest("/user/exc", { method: "GET" });
+  return apiRequest("/user/exc", {
+    method: "GET",
+  });
 }
 
 export async function join(data) {
   return apiRequest("/join", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(data),
   });
 }
@@ -114,24 +127,33 @@ export async function join(data) {
 export async function getChats() {
   return apiRequest("/user/chat/search", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
 }
 
 export async function getUserAccount() {
-  return apiRequest("/user/userAccount", { method: "GET" });
+  return apiRequest("/user/userAccount", {
+    method: "GET",
+  });
 }
 
 export async function getUser() {
-  return apiRequest("/user", { method: "GET" });
+  return apiRequest("/user", {
+    method: "GET",
+  });
 }
 
 export async function updatePassword({ currentPassword, newPassword }) {
-  return apiRequest("/user/password", {
+  const response = apiRequest("/user/password", {
     method: "PATCH",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({ currentPassword, newPassword }),
   });
+  return response;
 }
 
 export default apiRequest;

@@ -34,13 +34,15 @@ const Services = () => {
       <div className="md:hidden absolute inset-y-0 left-[66.66%] w-px bg-gray-200" />
 
       {/* 콘텐츠 */}
-      <div className="w-full px-4">
-        <div className="max-w-[1180px] mx-auto h-full flex md:grid md:grid-cols-3 items-center justify-end text-center gap-4 md:gap-0">
+      <div className="w-full h-[185px]">
+        <div className="max-w-[1180px] mx-auto h-full flex items-start md:items-center">
           {services.map((item, idx) => (
-            <div key={idx} className="flex flex-col items-center gap-1">
-              <img src={item.img} alt={item.title} className="h-16" />
-              <h3 className="text-lg font-bold">{item.title}</h3>
-              <p className="text-sm text-gray-500">{item.desc}</p>
+            <div key={idx} className="flex-1 flex flex-col md:flex-row justify-center md:items-center gap-1">
+              <img src={item.img} alt={item.title} className="block max-w-[101px] md:max-w-[128px] h-auto mx-auto md:mx-0" />
+              <div className='text-center md:text-left'>
+                <h3 className="text-lg font-bold">{item.title}</h3>
+                <p className="text-sm text-gray-500">{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>

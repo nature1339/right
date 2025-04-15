@@ -8,7 +8,6 @@ import Market from "@components/pnc/market";
 import Notices from "@components/pnc/notices";
 import InvestmentNotice from "@components/pnc/investmentNotice";
 /////////🖥️
-import "@css/pnc.css";
 
 export default function IntroPNC() {
   return (

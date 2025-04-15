@@ -33,7 +33,7 @@ const data = [
 const Market = () => {
   return (
     <section className="pt-6 pb-10">
-      <div className="w-full max-w-[1180px] mx-auto px-4">
+      <div className="w-full max-w-[1180px] mx-auto px-4 md:px-0">
 
         {/* 헤더: 지수 + 날짜 + 버튼 */}
         <div className="flex items-center justify-between mb-4">
@@ -64,7 +64,7 @@ const Market = () => {
         </div>
 
         {/* 카드 리스트 */}
-        <div className="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide -mx-4 px-4">
+        <div className="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide">
           {data.map((item, idx) => (
             <div
               key={idx}

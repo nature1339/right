@@ -9,7 +9,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import HealthGuard from "@components/healthGuard";
 import Header from "@components/header";
@@ -17,6 +17,7 @@ import clsx from "clsx";
 
 import "@css/index.css";
 import "@css/mainHead.css";
+import "@css/pnc.css";
 import "@utils/in18";
 import "@css/sing.css";
 import "@css/daterangepicker.css";
@@ -26,6 +27,15 @@ export default function App({ Component, pageProps }) {
   const [siteName, mode] = theme.split("-");
 
   const router = useRouter();
+
+  useEffect(()=>{
+    const html = document.documentElement;
+    html.classList.remove('pnc_html');
+    if(siteName === 'pnc'){
+      html.classList.add('pnc_html');
+    }
+  },[siteName])
+
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -58,7 +68,7 @@ export default function App({ Component, pageProps }) {
               <div
                 className={clsx(
                   theme,
-                  "body_wrap",
+                  siteName == "pnc" ? "pnc_wrap" : "body_wrap",
                   // 다크모드 사용 안함 페이지
                   [
                     "/",
