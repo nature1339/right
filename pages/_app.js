@@ -28,13 +28,13 @@ export default function App({ Component, pageProps }) {
 
   const router = useRouter();
 
-  useEffect(()=>{
+  useEffect(() => {
     const html = document.documentElement;
-    html.classList.remove('pnc_html');
-    if(siteName === 'pnc'){
-      html.classList.add('pnc_html');
+    html.classList.remove("pnc_html");
+    if (siteName === "pnc") {
+      html.classList.add("pnc_html");
     }
-  },[siteName])
+  }, [siteName]);
 
   const [queryClient] = useState(
     () =>
@@ -102,6 +102,9 @@ export default function App({ Component, pageProps }) {
                     "/counseling",
                     // -------pnc page
                     "/pnc_join",
+                    "/pnc_login",
+                    "/pnc_agree",
+                    "/pnc_join_complete",
                   ].includes(router.pathname) ? (
                     <Component {...pageProps} />
                   ) : (
