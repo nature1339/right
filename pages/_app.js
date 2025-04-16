@@ -100,6 +100,8 @@ export default function App({ Component, pageProps }) {
                     "/foreign-futures",
                     "/system",
                     "/counseling",
+                    // -------pnc page
+                    "/pnc_join",
                   ].includes(router.pathname) ? (
                     <Component {...pageProps} />
                   ) : (

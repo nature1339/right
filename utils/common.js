@@ -48,7 +48,7 @@ export const getSiteName = () => {
 
   // 개발
   if (window.location.hostname.includes("89.187.28.65")) {
-    return "pnc";
+    return "ocbc";
   }
 
   // 로컬
