@@ -100,11 +100,6 @@ export default function App({ Component, pageProps }) {
                     "/foreign-futures",
                     "/system",
                     "/counseling",
-                    // -------pnc page
-                    "/pnc_join",
-                    "/pnc_login",
-                    "/pnc_agree",
-                    "/pnc_join_complete",
                   ].includes(router.pathname) ? (
                     <Component {...pageProps} />
                   ) : (

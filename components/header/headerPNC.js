@@ -2,8 +2,10 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { GrLanguage } from "react-icons/gr";
 import { LiaTimesSolid } from "react-icons/lia";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+  const { t, i18n } = useTranslation();
   const [menuActive, setMenuActive] = useState(false);
   return (
     <>
@@ -48,7 +50,15 @@ const Header = () => {
                   className="w-4 h-4"
                 />
                 <div className="w-px h-3 bg-gray-300"></div>
-                <span>KO</span>
+                <span
+                  className="cursor-pointer"
+                  onClick={() => {
+                    localStorage.setItem("i18nextLng", "ko");
+                    i18n.changeLanguage("ko");
+                  }}
+                >
+                  KO
+                </span>
               </div>
 
               <Link
@@ -100,11 +110,27 @@ const Header = () => {
             <div className="flex gap-5 items-center">
               <GrLanguage />
               <div className="flex items-center gap-3">
-                <Link href="#" className="text-[20px] font-bold">
+                <Link
+                  href="#"
+                  className="text-[20px] font-bold"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    localStorage.setItem("i18nextLng", "ko");
+                    i18n.changeLanguage("ko");
+                  }}
+                >
                   KR
                 </Link>
                 <div className="w-px h-[18px] bg-[#E3E3E3]"></div>
-                <Link href="#" className="text-[20px] font-bold text-[#C3C3C3]">
+                <Link
+                  href="#"
+                  className="text-[20px] font-bold text-[#C3C3C3]"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    localStorage.setItem("i18nextLng", "en");
+                    i18n.changeLanguage("en");
+                  }}
+                >
                   EN
                 </Link>
               </div>

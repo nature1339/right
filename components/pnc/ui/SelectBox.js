@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
-const SelectBox = ({ value, option, name, onChange, className }) => {
+const SelectBox = ({ id, value, option, name, onChange, className }) => {
   const [select, setSelect] = useState();
   const [active, setActive] = useState(false);
+  const selectRef = useRef(null);
+
   return (
     <>
       <select
+        ref={selectRef}
+        id={id}
         name={name}
         value={select ? select.value : value}
-        onChange={(e) => onChange(e)}
+        onChange={(e) => {
+          onChange(e);
+        }}
         className={"hidden"}
       >
         {option.map((item, idx) => (
@@ -38,6 +44,8 @@ const SelectBox = ({ value, option, name, onChange, className }) => {
                 onClick={() => {
                   setSelect(item);
                   setActive(false);
+                  const event = new Event("change", { bubbles: true });
+                  selectRef.current.dispatchEvent(event);
                 }}
                 className="flex items-center h-[40px] px-3 hover:bg-[#F3F3F3] hover:text-[#324580]"
               >

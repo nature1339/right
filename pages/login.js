@@ -6,10 +6,10 @@ import { useEffect } from "react";
 import themeStore from "store/theme";
 import useToast from "../hooks/toast";
 import ToastModal from "@components/toastModal";
-import Head from "@components/head";
 import { useTranslation } from "react-i18next";
+import Checkbox from "../components/pnc/ui/Checkbox";
 
-export default function Login() {
+const Login = () => {
   const { t } = useTranslation();
   const { isVisible, message, showToast } = useToast();
   const { theme } = themeStore();
@@ -64,46 +64,84 @@ export default function Login() {
 
   return (
     <>
-      <Head title={t("로그인")} />
-      <div className={`body_wrap sign_body ${mode}`}>
-        <div className="body_wrap_inner">
+      <div className="min-h-screen flex items-center justify-center bg-[#f3f5f7] px-4 py-20 md:py-40">
+        <div className="w-full max-w-[580px] px-4">
+          <h2 className="text-[44px] font-bold text-center mb-16">
+            {t("로그인")}
+          </h2>
+
           <form id="loginForm" onSubmit={handleLogin} autoComplete="off">
-            <div className="sign_wrap sign_login_wrap">
-              <div className="sign_text">
-                <h2>LOG IN</h2>
-                <p>{t("거래에 참여하려면 로그인하십시오.")}</p>
-              </div>
-              <div className="sign_box">
-                <div className="input_wrap">
-                  <input
-                    type="text"
-                    id="loginId"
-                    name="loginId"
-                    placeholder={t("아이디를 입력하세요.")}
-                  />
-                </div>
-                <div className="input_wrap">
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder={t("비밀번호 입력하세요.")}
-                  />
-                </div>
-                <div className="btn_wrap">
-                  <button
-                    className="btn primary !bg-primary !border-primary hover:!shadow-none"
-                    type="submit"
-                  >
-                    {t("로그인")}
-                  </button>
-                </div>
-              </div>
+            <div className="mb-4">
+              <label
+                htmlFor="username"
+                className="block text-[19px] font-semibold mb-2 text-[#131313]"
+              >
+                아이디
+              </label>
+              <input
+                id="loginId"
+                name="loginId"
+                type="text"
+                placeholder={t("아이디를 입력하세요.")}
+                className="w-full px-3 font-light h-[64px] border rounded-md text-[18px] leading-none focus:outline-none focus:border-indigo-500 bg-white placeholder-[#A3A3A3]"
+              />
             </div>
+
+            <div className="mb-5">
+              <label
+                htmlFor="password"
+                className="block text-[19px] font-semibold mb-2 text-[#131313]"
+              >
+                비밀번호
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                placeholder={t("비밀번호 입력하세요.")}
+                className="w-full px-3 font-light h-[64px] border rounded-md text-[18px] leading-none focus:outline-none focus:border-indigo-500 bg-white placeholder-[#A3A3A3]"
+              />
+            </div>
+
+            <div className="mb-10 flex items-center">
+              {/* <input type="checkbox" id="remember" className="mr-2" /> */}
+              <Checkbox id="remember" />
+              <label
+                htmlFor="remember"
+                className="text-base text-[#131313] ml-2"
+              >
+                아이디 저장
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-[#324580] text-[20px] text-white py-[17px] font-semibold rounded-md hover:bg-indigo-900 transition"
+            >
+              {t("로그인")}
+            </button>
           </form>
+
+          <div className="flex justify-center items-center text-base text-gray-600 mt-6">
+            <a href="/join" className="hover:underline">
+              회원가입
+            </a>
+            <div className="mx-6 h-4 w-px bg-[#D9D9D9]"></div>
+            <div className="space-x-2">
+              <a href="#" className="hover:underline">
+                아이디 찾기
+              </a>
+              <span>·</span>
+              <a href="#" className="hover:underline">
+                비밀번호 변경
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       <ToastModal message={message} isVisible={isVisible} />
     </>
   );
-}
+};
+
+export default Login;

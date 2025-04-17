@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "@components/header";
 import useFormState from "hooks/useFormState";
@@ -12,8 +12,11 @@ import { privacyPolicyAgree, privacyPolicyAgreeEn } from "@constants/join";
 import clsx from "clsx";
 import Head from "@components/head";
 import { useTranslation } from "react-i18next";
+import { CiCircleInfo } from "react-icons/ci";
+import SelectBox from "../components/pnc/ui/SelectBox";
+import Checkbox from "../components/pnc/ui/Checkbox";
 
-export default function Join() {
+const SignupForm = () => {
   const { t, i18n } = useTranslation();
   const { theme } = themeStore();
   const [siteName, mode] = theme.split("-");
@@ -34,33 +37,31 @@ export default function Join() {
   const [isPrivacyPolicyAgree, setIsPrivacyPolicyAgree] = useState(false);
   const [isAgree, setIsAgree] = useState(false);
 
-const [isLoading, setIsLoading] = useState(true);
-const [isError, setIsError] = useState(false);
-const [banksList, setBanksList] = useState([]);
-useEffect(() => {
-  const fetchBanksList = async () => {
-    try {
-      const res = await apiRequest("/banks/", { method: "GET" });
-      setBanksList(res);
-      setIsError(false);
-    } catch (error) {
-      console.error("은행 리스트를 불러오는 데 실패했습니다.", error);
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [banksList, setBanksList] = useState([]);
+  useEffect(() => {
+    const fetchBanksList = async () => {
+      try {
+        const res = await apiRequest("/banks/", { method: "GET" });
+        setBanksList(res);
+        setIsError(false);
+      } catch (error) {
+        console.error("은행 리스트를 불러오는 데 실패했습니다.", error);
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  fetchBanksList();
-}, []);
+    fetchBanksList();
+  }, []);
 
   const { mutate: joinMutate } = useMutation({
     mutationFn: join,
     onSuccess: () => {
-      showToast(t("회원가입이 완료되었습니다."));
-      setTimeout(() => {
-        router.push("/login");
-      }, 3000);
+      // showToast(t("회원가입이 완료되었습니다."));
+      router.push("/join-complete");
     },
     onError: (error) => {
       if (error.status === 400 || error.status === 409) {
@@ -74,6 +75,7 @@ useEffect(() => {
 
   const onJoin = (e) => {
     e.preventDefault(); // Prevent page refresh
+    console.log(formValues);
 
     const {
       userid,
@@ -151,240 +153,272 @@ useEffect(() => {
   };
 
   return (
-    <>
-      <Head title={t("회원가입")} />
-      <div className={`body_wrap sign_body ${mode}`}>
-        <div className="body_wrap_inner">
-          <Header />
-          <form id="joinForm" onSubmit={onJoin} autoComplete="off">
-            {isPrivacyPolicyAgree ? (
-              <div className="sign_wrap sign_top ">
-                <div className="sign_text">
-                  <h2>SIGN UP</h2>
-                  <p>
-                    {isPrivacyPolicyAgree
-                      ? t("회원가입을 위한 정보를 입력해주세요.")
-                      : t("개인정보 수집 및 이용 동의")}
-                  </p>
-                </div>
-                <div className="sign_box">
-                  <div className="input_wrap">
-                    <input
-                        type="text"
-                        name="userid"
-                        id="userId"
-                        placeholder={t(
-                            "사용하실 아이디를 입력하세요.(4자리 이상)"
-                        )}
-                        value={formValues.userid}
-                        onChange={onChange}
-                    />
-                    <p>
-                      {t("가입 후에는 사용자 아이디를 변경할 수 없습니다.")}
-                      <br/>
-                      {t(
-                          "아이디 분실 시 자산 손실의 위험이 있으니 주의하시기 바랍니다."
-                      )}
-                    </p>
-                  </div>
+    <div className="min-h-screen py-20 md:py-40 flex items-center justify-center bg-[#f3f5f7] p-4">
+      {isPrivacyPolicyAgree ? (
+        <div className="w-full max-w-[580px] px-4">
+          <h2 className="text-[44px] font-bold text-center mb-3">회원가입</h2>
+          <div className="flex justify-center items-center gap-5 mb-16">
+            <div className="bg-[#E3E3E3] h-px w-full flex-1"></div>
+            <p className="text-[18px] text-[#636363] text-center">
+              회원가입을 위한 정보를 입력해주세요.
+            </p>
+            <div className="bg-[#E3E3E3] h-px w-full flex-1"></div>
+          </div>
 
-                  <div className="input_wrap">
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder={t("비밀번호(6자리 이상)")}
-                        autoComplete="new-password"
-                        value={formValues.password1nd}
-                        onChange={onChange}
-                    />
-                  </div>
-
-                  <div className="input_wrap">
-                    <input
-                        type="password"
-                        id="passwordConfirm"
-                        name="passwordConfirm"
-                        placeholder={t("비밀번호확인")}
-                        autoComplete="new-password"
-                        value={formValues.password2nd}
-                        onChange={onChange}
-                    />
-                  </div>
-
-                  <div className="input_wrap">
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        placeholder={t("이름(실명)을 입력하세요.")}
-                        value={formValues.username}
-                        onChange={onChange}
-                    />
-                  </div>
-
-                  <div className="input_wrap">
-                    <input
-                        type="text"
-                        id="mobile"
-                        name="mobile"
-                        placeholder={t(
-                            "전화번호를 입력하세요.(숫자만 입력 가능)"
-                        )}
-                        value={formValues.mobile}
-                        onChange={onChange}
-                    />
-                  </div>
-                  <div className="input_wrap">
-                    <select
-                        name="bankname"
-                        value={formValues.bankname}
-                        onChange={onChange}
-                    >
-                      <option value="">{t("은행선택")}</option>
-                      {isLoading && <option disabled>{t("로딩 중...")}</option>}
-                      {isError && <option disabled>{t("은행 불러오기 실패")}</option>}
-                      {banksList.map((bank) => (
-                          <option key={bank.id || bank.code || bank.name} value={bank.name}>
-                            {t(bank.name)}
-                          </option>
-                      ))}
-                    </select>
-                  </div>
-                  {/*<div className="input_wrap">
-                    <select
-                      name="bankname"
-                      id="bankname"
-                      value={formValues.bankname}
-                      onChange={onChange}
-                    >
-                      <option value="">{t("은행선택")}</option>
-                      <option value="KB국민은행">{t("KB국민은행")}</option>
-                      <option value="농협은행">{t("농협은행")}</option>
-                      <option value="신한은행">{t("신한은행")}</option>
-                      <option value="우리은행">{t("우리은행")}</option>
-                      <option value="하나은행">{t("하나은행")}</option>
-                      <option value="SC제일은행">{t("SC제일은행")}</option>
-                      <option value="한국씨티은행">{t("한국씨티은행")}</option>
-                      <option value="DGB대구은행">{t("DGB대구은행")}</option>
-                      <option value="BNK부산은행">{t("BNK부산은행")}</option>
-                      <option value="광주은행">{t("광주은행")}</option>
-                      <option value="제주은행">{t("제주은행")}</option>
-                      <option value="전북은행">{t("전북은행")}</option>
-                      <option value="BNK경남은행">{t("BNK경남은행")}</option>
-                      <option value="케이뱅크">{t("케이뱅크")}</option>
-                      <option value="카카오뱅크">{t("카카오뱅크")}</option>
-                      <option value="KDB산업은행">{t("KDB산업은행")}</option>
-                      <option value="기업은행">{t("기업은행")}</option>
-                      <option value="새마을금고">{t("새마을금고")}</option>
-                      <option value="SH수협은행">{t("SH수협은행")}</option>
-                      <option value="우체국">{t("우체국")}</option>
-                      <option value="신협은행">{t("신협은행")}</option>
-                    </select>
-                  </div>*/}
-
-                  <div className="input_wrap">
-                    <input
-                        type="text"
-                        id="ownername"
-                        name="ownername"
-                        placeholder={t("예금주")}
-                        value={formValues.ownername}
-                        onChange={onChange}
-                    />
-                  </div>
-
-                  <div className="input_wrap">
-                    <input
-                        type="text"
-                        id="accountno"
-                        name="accountno"
-                        placeholder={t("계좌번호 (숫자만 입력 가능)")}
-                        value={formValues.accountno}
-                        onChange={onChange}
-                    />
-                  </div>
-
-                  <div className="input_wrap">
-                    <input
-                        type="text"
-                        id="joincode"
-                        name="joincode"
-                        placeholder={t("가입코드를 입력하세요")}
-                        value={formValues.joincode}
-                        onChange={onChange}
-                    />
-                  </div>
-
-                  <div className="btn_wrap">
-                    <button
-                        className="btn bg-primary text-white border-primary"
-                        type="submit"
-                    >
-                      {t("회원가입")}
-                    </button>
-                  </div>
-
-                  <p className="login_text">
-                    <Link href="/login" className="underline">
-                      {t("이미 회원이시면 로그인 해주세요.")}
-                    </Link>
-                  </p>
-                </div>
+          <form
+            id="joinForm"
+            onSubmit={onJoin}
+            autoComplete="off"
+            className="space-y-4"
+          >
+            {/* 아이디 */}
+            <div>
+              <label className="block text-[19px] font-semibold mb-2 text-[#131313]">
+                아이디 <span className="text-red-500">*</span>
+              </label>
+              <input
+                name="userid"
+                id="userId"
+                value={formValues.userid}
+                onChange={onChange}
+                type="text"
+                placeholder={t("사용하실 아이디를 입력하세요.(4자리 이상)")}
+                className="w-full px-3 font-light h-[64px] border rounded-md text-[18px] leading-none focus:outline-none focus:border-indigo-500 bg-white placeholder-[#A3A3A3]"
+              />
+              <div className="flex gap-2 mt-1">
+                <CiCircleInfo size={18} className="mt-1" />
+                <p className="text-[18px] text-[#636363]">
+                  가입 후에는 사용자 아이디를 변경할 수 없습니다.
+                  <br />
+                  아이디 분실 시 자산 손실의 위험이 있으니 주의하시기 바랍니다.
+                </p>
               </div>
-            ) : (
-                <div className="flex flex-col items-center ">
-                  <div className="border border-gray-200 border-solid rounded-2xl max-w-[500px] w-full p-12">
-                    <div className="sign_text">
-                      <h2>SIGN UP</h2>
-                      <p>
-                        {isPrivacyPolicyAgree
-                            ? t("회원가입을 위한 정보를 입력해주세요.")
-                            : t("개인정보 수집 및 이용 동의")}
-                    </p>
+            </div>
+
+            {/* 비밀번호 */}
+            <div>
+              <label className="block text-[19px] font-semibold mb-2 text-[#131313]">
+                비밀번호 <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="password"
+                name="password"
+                value={formValues.password1nd}
+                onChange={onChange}
+                type="password"
+                placeholder={t("비밀번호(6자리 이상)")}
+                className="w-full px-3 font-light h-[64px] border rounded-md text-[18px] leading-none focus:outline-none focus:border-indigo-500 bg-white placeholder-[#A3A3A3]"
+                autoComplete="new-password"
+              />
+            </div>
+
+            {/* 비밀번호 확인 */}
+            <div>
+              <label className="block text-[19px] font-semibold mb-2 text-[#131313]">
+                비밀번호 확인 <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="password"
+                id="passwordConfirm"
+                name="passwordConfirm"
+                placeholder={t("비밀번호확인")}
+                autoComplete="new-password"
+                value={formValues.password2nd}
+                onChange={onChange}
+                className="w-full px-3 font-light h-[64px] border rounded-md text-[18px] leading-none focus:outline-none focus:border-indigo-500 bg-white placeholder-[#A3A3A3]"
+              />
+            </div>
+
+            {/* 이름 */}
+            <div>
+              <label className="block text-[19px] font-semibold mb-2 text-[#131313]">
+                이름
+              </label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder={t("이름(실명)을 입력하세요.")}
+                value={formValues.username}
+                onChange={onChange}
+                className="w-full px-3 font-light h-[64px] border rounded-md text-[18px] leading-none focus:outline-none focus:border-indigo-500 bg-white placeholder-[#A3A3A3]"
+              />
+            </div>
+
+            {/* 전화번호 */}
+            <div>
+              <label className="block text-[19px] font-semibold mb-2 text-[#131313]">
+                전화번호
+              </label>
+              <input
+                type="text"
+                id="mobile"
+                name="mobile"
+                placeholder={t("전화번호를 입력하세요.(숫자만 입력 가능)")}
+                value={formValues.mobile}
+                onChange={onChange}
+                className="w-full px-3 font-light h-[64px] border rounded-md text-[18px] leading-none focus:outline-none focus:border-indigo-500 bg-white placeholder-[#A3A3A3]"
+              />
+            </div>
+
+            {/* 계좌정보 */}
+            <div>
+              <label className="block text-[19px] font-semibold mb-2 text-[#131313]">
+                계좌번호 <span className="text-red-500">*</span>
+              </label>
+              <div className="flex space-x-2">
+                <input
+                  type="text"
+                  id="accountno"
+                  name="accountno"
+                  placeholder={t("계좌번호 (숫자만 입력 가능)")}
+                  value={formValues.accountno}
+                  onChange={onChange}
+                  className="w-2/3 px-3 font-light h-[64px] border rounded-md text-[18px] leading-none focus:outline-none focus:border-indigo-500 bg-white placeholder-[#A3A3A3]"
+                />
+                {isLoading && (
+                  <div className="flex items-center justify-between w-full px-3 font-light h-[64px] border rounded-md focus:outline-none bg-white placeholder-[#A3A3A3] cursor-default">
+                    {t("로딩 중...")}
                   </div>
-                  <div className="max-w-[450px] w-full">
-                    <textarea
-                      className="w-full h-[45vh] border-gray-200 resize-none rounded-md p-4 dark:bg-[#2b3139] text-[14px]"
-                      value={
-                        i18n.language === "ko"
-                          ? privacyPolicyAgree
-                          : privacyPolicyAgreeEn
-                      }
-                      readOnly
-                    />
-                    <div className="flex gap-2 mt-2 justify-between items-center">
-                      <label className="flex gap-2 items-center cursor-pointer">
-                        <input
-                          className="w-7 h-7"
-                          type="checkbox"
-                          checked={isAgree}
-                          onChange={() => setIsAgree((prev) => !prev)}
-                        />
-                        <div className="dark:text-[#e3e3e3]">
-                          {t("약관을 내용을 읽고 동의합니다.")}
-                        </div>
-                      </label>
-                      <button
-                        onClick={() => setIsPrivacyPolicyAgree(true)}
-                        disabled={!isAgree}
-                        className={clsx(
-                          "w-[80px] h-[40px] text-white rounded-[.4rem] text-[14px]",
-                          "bg-primary disabled:bg-gray-300",
-                          "dark:bg-[#00aaff] dark:disabled:bg-gray-300"
-                        )}
-                      >
-                        {t("확인")}
-                      </button>
-                    </div>
+                )}
+                {isError && (
+                  <div className="flex items-center justify-between w-full px-3 font-light h-[64px] border rounded-md focus:outline-none bg-white placeholder-[#A3A3A3] cursor-default">
+                    {t("은행 불러오기 실패")}
                   </div>
-                </div>
+                )}
+                {banksList && (
+                  <SelectBox
+                    id="bankname"
+                    className="w-1/3"
+                    name="bankname"
+                    value={formValues.bankname}
+                    onChange={(e) => {
+                      onChange(e);
+                    }}
+                    option={[
+                      {
+                        name: "은행선택",
+                        value: "",
+                      },
+                      ...banksList.map((bank) => {
+                        return {
+                          name: bank.name,
+                          value: bank.id,
+                        };
+                      }),
+                    ]}
+                  />
+                )}
               </div>
-            )}
+            </div>
+            <div>
+              <input
+                type="text"
+                id="ownername"
+                name="ownername"
+                placeholder={t("예금주")}
+                value={formValues.ownername}
+                onChange={onChange}
+                className="w-full px-3 font-light h-[64px] border rounded-md text-[18px] leading-none focus:outline-none focus:border-indigo-500 bg-white placeholder-[#A3A3A3]"
+              />
+            </div>
+
+            {/* 가입코드 */}
+            <div>
+              <label className="block text-[19px] font-semibold mb-2 text-[#131313]">
+                가입코드
+              </label>
+              <input
+                type="text"
+                id="joincode"
+                name="joincode"
+                placeholder={t("가입코드를 입력하세요")}
+                value={formValues.joincode}
+                onChange={onChange}
+                className="w-full px-3 font-light h-[64px] border rounded-md text-[18px] leading-none focus:outline-none focus:border-indigo-500 bg-white placeholder-[#A3A3A3]"
+              />
+            </div>
+
+            {/* 버튼 */}
+            <div>
+              <button
+                type="submit"
+                className="mt-16 w-full bg-[#324580] text-[20px] text-white py-[17px] font-semibold rounded-md hover:bg-indigo-900 transition"
+              >
+                {t("회원가입")}
+              </button>
+            </div>
           </form>
+
+          <div className="flex justify-center items-center gap-5 my-7">
+            <div className="bg-[#E3E3E3] h-px w-full flex-1"></div>
+            <p className="text-[18px] text-[#636363] text-center">
+              {t("이미 회원이시면 로그인 해주세요.")}
+            </p>
+            <div className="bg-[#E3E3E3] h-px w-full flex-1"></div>
+          </div>
+          <div className="w-[200px] mx-auto border border-[#C3C3C3] rounded-md">
+            <Link
+              href="/login"
+              className="block text-center bg-white text-[20px] py-[17px] font-semibold rounded-md transition"
+            >
+              {t("로그인")}
+            </Link>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="w-full max-w-[580px] px-4">
+          <h2 className="text-[44px] font-bold text-center mb-3">
+            {t("약관동의")}
+          </h2>
+          <div className="flex justify-center items-center gap-5 mb-16">
+            <div className="bg-[#E3E3E3] h-px w-full flex-1"></div>
+            <p className="text-[18px] text-[#636363] text-center">
+              {t("개인정보 수집 및 이용 동의")}
+            </p>
+            <div className="bg-[#E3E3E3] h-px w-full flex-1"></div>
+          </div>
+
+          <div className="border border-gray-300 rounded-md p-8 h-[400px] overflow-y-auto text-sm text-[#636363] whitespace-pre-wrap mb-4 bg-white leading-snug">
+            {i18n.language === "ko" ? privacyPolicyAgree : privacyPolicyAgreeEn}
+          </div>
+
+          <div className="flex items-center mb-16 pt-3">
+            {/* <input
+            type="checkbox"
+            id="agree"
+            checked={agreed}
+            onChange={(e) => setAgreed(e.target.checked)}
+            className="mr-2"
+          /> */}
+
+            <Checkbox
+              id="agree"
+              onChange={(e) => setIsAgree((prev) => !prev)}
+            />
+
+            <label htmlFor="agree" className="text-base text-[#131313] ml-2">
+              {t("약관을 내용을 읽고 동의합니다.")}
+            </label>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setIsPrivacyPolicyAgree(true)}
+            disabled={!isAgree}
+            className={`w-full text-[20px] text-white py-[17px] font-semibold rounded-md transition ${
+              isAgree
+                ? "bg-[#324580] hover:bg-indigo-900"
+                : "bg-gray-400 cursor-not-allowed"
+            }`}
+          >
+            {t("확인")}
+          </button>
+        </div>
+      )}
       <ToastModal message={message} isVisible={isVisible} />
-    </>
+    </div>
   );
-}
+};
+
+export default SignupForm;
