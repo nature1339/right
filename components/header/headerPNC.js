@@ -62,13 +62,13 @@ const Header = () => {
               </div>
 
               <Link
-                href="/pnc_login"
+                href="/login"
                 className="hidden sm:flex items-center h-[32px] px-4 text-sm border border-gray-300 rounded-full hover:bg-gray-100"
               >
                 로그인
               </Link>
               <Link
-                href="/pnc_join"
+                href="/join"
                 className="hidden sm:flex h-[32px] px-4 text-sm bg-[#2C3E94] text-white rounded-full items-center gap-1 hover:opacity-90"
               >
                 <img
@@ -179,14 +179,20 @@ const Header = () => {
             </ul>
             <div className="w-2/5 flex items-center flex-col border-l border-[#E3E3E3] pt-8">
               <Link
-                href="/pnc_login"
+                href="/login"
                 className="flex justify-center items-center text-base font-semibold w-[108px] h-[48px] border border-[#C3C3C3] rounded-full"
+                onClick={() => {
+                  setMenuActive(false);
+                }}
               >
                 로그인
               </Link>
               <Link
-                href="/pnc_join"
+                href="/join"
                 className="mt-2 flex justify-center items-center gap-1 text-base text-white font-semibold w-[108px] h-[48px] border border-[#324580] rounded-full bg-[#324580]"
+                onClick={() => {
+                  setMenuActive(false);
+                }}
               >
                 <img
                   src="/assets/ic.png"

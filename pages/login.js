@@ -104,13 +104,14 @@ const Login = () => {
             </div>
 
             <div className="mb-10 flex items-center">
+            <label
+                htmlFor="remember"
+                className="flex items-center"
+              >
               {/* <input type="checkbox" id="remember" className="mr-2" /> */}
               <Checkbox id="remember" />
-              <label
-                htmlFor="remember"
-                className="text-base text-[#131313] ml-2"
-              >
-                아이디 저장
+              <span className="text-base text-[#131313] ml-2">
+                아이디 저장</span>
               </label>
             </div>
 
