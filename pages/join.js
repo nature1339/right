@@ -392,12 +392,12 @@ const SignupForm = () => {
             className="mr-2"
           /> */}
             <label htmlFor="agree" className="flex items-center">
-            <Checkbox
-              id="agree"
-              onChange={(e) => setIsAgree((prev) => !prev)}
-            />
+              <Checkbox
+                id="agree"
+                onChange={(e) => setIsAgree((prev) => !prev)}
+              />
 
-<span className="text-base text-[#131313] ml-2"></span>
+              <span className="text-base text-[#131313] ml-2"></span>
               {t("약관을 내용을 읽고 동의합니다.")}
             </label>
           </div>

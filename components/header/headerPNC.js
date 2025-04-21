@@ -1,12 +1,79 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import userStore from "store/user";
+import themeStore from "store/theme";
 import { GrLanguage } from "react-icons/gr";
 import { LiaTimesSolid } from "react-icons/lia";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
+import useScrollPosition from "@react-hook/window-scroll";
+import NoticeModal from "@components/noticeModal";
+import SettingModal from "@components/settingModal";
 
 const Header = () => {
   const { t, i18n } = useTranslation();
+  const router = useRouter();
   const [menuActive, setMenuActive] = useState(false);
+  const { userInfo } = userStore();
+
+  // 내비게이션 목록
+  const gnbList = userInfo.userid
+    ? [
+        { path: "orders", txt: t("통합주문") },
+        { path: "cash", txt: t("입/출금") },
+        { path: "history", txt: t("거래내역") },
+        { path: "ovnight", txt: t("오버나잇") },
+        { path: "counseling", txt: t("상담센터") },
+        // { path: "copy-trading", txt: "카피트레이딩", icon: OrderIcon },
+      ]
+    : [
+        { path: "company-intro", txt: t("회사소개") },
+        { path: "domestic-futures", txt: t("국내선물") },
+        { path: "foreign-futures", txt: t("해외선물") },
+        { path: "system", txt: t("거래 시스템") },
+        { path: "counseling", txt: t("고객센터") },
+      ];
+
+  // 테마 토글
+  const { theme, toggleTheme } = themeStore();
+  const [siteName, mode] = theme.split("-");
+
+  // 공지사항 모달
+  const [noticeModalOpen, setNoticeModalOpen] = useState(false);
+  const openNoticeModal = () => {
+    if (!userInfo.userid) {
+      return;
+    }
+    setNoticeModalOpen(true);
+  };
+  const closeNoticeModal = () => setNoticeModalOpen(false);
+
+  // 설정 모달
+  const [settingModalOpen, setSettingModalOpen] = useState(false);
+  const openSettingModal = () => setSettingModalOpen(true);
+  const closeSettingModal = () => setSettingModalOpen(false);
+
+  // 헤더 위치에따른 색상
+  const [isSticky, setIsSticky] = useState(false);
+  const scrollY = useScrollPosition(60);
+
+  useEffect(() => {
+    setIsSticky(scrollY > 0);
+  }, [scrollY]);
+
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const toggleOpenMenu = () => {
+    setIsOpenMenu((prev) => !prev);
+  };
+
+  const isOnlyLightModePages = [
+    "/",
+    "/company-intro",
+    "/domestic-futures",
+    "/foreign-futures",
+    "/system",
+  ].includes(router.pathname);
+
   return (
     <>
       <header className="fixed top-0 left-0 w-full pt-0 md:pt-4 z-50">
@@ -19,8 +86,20 @@ const Header = () => {
                 alt="PNC Logo"
                 className="h-6"
               />
-              <nav className="hidden lg:flex gap-6 text-sm font-medium text-gray-800">
-                <button type="button" className="hover:text-blue-600">
+              <ul className="hidden lg:flex gap-6 text-sm font-medium text-gray-800">
+                {gnbList.map((item, idx) => (
+                  <li key={idx} className={"hover:text-blue-600 list-none"}>
+                    <a href={"/" + item.path}>{item.txt}</a>
+                  </li>
+                ))}
+                {userInfo.userid && (
+                  <li className={"hover:text-blue-600 list-none"}>
+                    <button onClick={() => openNoticeModal()}>
+                      {t("공지사항")}
+                    </button>
+                  </li>
+                )}
+                {/* <button type="button" className="hover:text-blue-600">
                   회사소개
                 </button>
                 <button type="button" className="hover:text-blue-600">
@@ -37,8 +116,8 @@ const Header = () => {
                 </button>
                 <button type="button" className="hover:text-blue-600">
                   공지사항
-                </button>
-              </nav>
+                </button> */}
+              </ul>
             </div>
 
             {/* 오른쪽: 검색 / 언어 / 로그인 / 회원가입 / 햄버거 */}
@@ -61,23 +140,56 @@ const Header = () => {
                 </span>
               </div>
 
-              <Link
-                href="/login"
-                className="hidden sm:flex items-center h-[32px] px-4 text-sm border border-gray-300 rounded-full hover:bg-gray-100"
-              >
-                로그인
-              </Link>
-              <Link
-                href="/join"
-                className="hidden sm:flex h-[32px] px-4 text-sm bg-[#2C3E94] text-white rounded-full items-center gap-1 hover:opacity-90"
-              >
-                <img
-                  src="/assets/ic.png"
-                  alt="회원가입 아이콘"
-                  className="w-4 h-4"
-                />
-                회원가입
-              </Link>
+              {userInfo.userid ? (
+                <>
+                  {/* 로그인했을 때 */}
+                  {router.pathname != "/" && (
+                    <div className="mode" id="header-mode">
+                      <div className="switch_wrap flex items-center">
+                        <input
+                          type="checkbox"
+                          id="switch"
+                          checked={mode === "dark"}
+                          onChange={toggleTheme}
+                        />
+                        <label htmlFor="switch" className="switch_label">
+                          <span className="onf_btn !bg-primary"></span>
+                        </label>
+                      </div>
+                    </div>
+                  )}
+                  <div className="pl-8 bg-no-repeat bg-left bg-[url('/images/user.svg')] flex items-center text-base">
+                    {userInfo.userid}
+                  </div>
+                  <div
+                    className="w-12 h-12 text-transparent text-0 bg-no-repeat bg-center bg-[url('/images/setting.svg')] cursor-pointer"
+                    onClick={() => openSettingModal()}
+                  >
+                    setting
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* 로그인 전 */}
+                  <a
+                    href="/login"
+                    className="hidden sm:flex items-center h-[32px] px-4 text-sm border border-gray-300 rounded-full hover:bg-gray-100"
+                  >
+                    {t("로그인")}
+                  </a>
+                  <a
+                    href="/join"
+                    className="hidden sm:flex h-[32px] px-4 text-sm bg-[#2C3E94] text-white rounded-full items-center gap-1 hover:opacity-90"
+                  >
+                    <img
+                      src="/assets/ic.png"
+                      alt="회원가입 아이콘"
+                      className="w-4 h-4"
+                    />
+                    {t("회원가입")}
+                  </a>
+                </>
+              )}
 
               {/* 햄버거 버튼 (모바일 전용) */}
               <button className="lg:hidden flex items-center justify-center w-8 h-8">
@@ -146,65 +258,83 @@ const Header = () => {
           </div>
           <div className="flex h-full">
             <ul className="p-4 h-full w-3/5">
-              <li className="p-2">
-                <Link href="#" className="font-medium text-2xl">
-                  회사소개
-                </Link>
-              </li>
-              <li className="p-2">
-                <Link href="#" className="font-medium text-2xl">
-                  국내선물
-                </Link>
-              </li>
-              <li className="p-2">
-                <Link href="#" className="font-medium text-2xl">
-                  해외선물
-                </Link>
-              </li>
-              <li className="p-2">
-                <Link href="#" className="font-medium text-2xl">
-                  고객센터
-                </Link>
-              </li>
-              <li className="p-2">
-                <Link href="#" className="font-medium text-2xl">
-                  거래시스템
-                </Link>
-              </li>
-              <li className="p-2">
-                <Link href="#" className="font-medium text-2xl">
-                  공지사항
-                </Link>
-              </li>
+              {gnbList.map((item, idx) => (
+                <li key={idx} className={"p-2"}>
+                  <Link href={"/" + item.path} className="font-medium text-2xl">
+                    {item.txt}
+                  </Link>
+                </li>
+              ))}
+              {userInfo.userid && (
+                <li key={idx} className={"p-2"}>
+                  <button
+                    onClick={() => openNoticeModal()}
+                    className="font-medium text-2xl"
+                  >
+                    {t("공지사항")}
+                  </button>
+                </li>
+              )}
             </ul>
+
             <div className="w-2/5 flex items-center flex-col border-l border-[#E3E3E3] pt-8">
-              <Link
-                href="/login"
-                className="flex justify-center items-center text-base font-semibold w-[108px] h-[48px] border border-[#C3C3C3] rounded-full"
-                onClick={() => {
-                  setMenuActive(false);
-                }}
-              >
-                로그인
-              </Link>
-              <Link
-                href="/join"
-                className="mt-2 flex justify-center items-center gap-1 text-base text-white font-semibold w-[108px] h-[48px] border border-[#324580] rounded-full bg-[#324580]"
-                onClick={() => {
-                  setMenuActive(false);
-                }}
-              >
-                <img
-                  src="/assets/ic.png"
-                  alt="회원가입 아이콘"
-                  className="w-4 h-4"
-                />
-                회원가입
-              </Link>
+              {userInfo.userid ? (
+                <>
+                  {/* 로그인했을 때 */}
+                  {router.pathname != "/" && (
+                    <div className="mode" id="header-mode">
+                      <div className="switch_wrap flex items-center pb-4">
+                        <input
+                          type="checkbox"
+                          id="switch"
+                          checked={mode === "dark"}
+                          onChange={toggleTheme}
+                        />
+                        <label htmlFor="switch" className="switch_label">
+                          <span className="onf_btn !bg-primary"></span>
+                        </label>
+                      </div>
+                    </div>
+                  )}
+                  <div className="pl-8 bg-no-repeat bg-left bg-[url('/images/user.svg')] flex items-center text-base">
+                    {userInfo.userid}
+                  </div>
+                  <div
+                    className="w-12 h-12 text-transparent text-0 bg-no-repeat bg-center bg-[url('/images/setting.svg')] cursor-pointer"
+                    onClick={() => openSettingModal()}
+                  >
+                    setting
+                  </div>
+                </>
+              ) : (
+                <>
+                  <a
+                    href="/login"
+                    className="flex justify-center items-center text-base font-semibold w-[108px] h-[48px] border border-[#C3C3C3] rounded-full"
+                  >
+                    {t("로그인")}
+                  </a>
+                  <a
+                    href="/join"
+                    className="mt-2 flex justify-center items-center gap-1 text-base text-white font-semibold w-[108px] h-[48px] border border-[#324580] rounded-full bg-[#324580]"
+                  >
+                    <img
+                      src="/assets/ic.png"
+                      alt="회원가입 아이콘"
+                      className="w-4 h-4"
+                    />
+                    {t("회원가입")}
+                  </a>
+                </>
+              )}
             </div>
           </div>
         </div>
       )}
+      {/* 공지사항 모달 */}
+      <NoticeModal isOpen={noticeModalOpen} onClose={closeNoticeModal} />
+      {/* 설정 모달 */}
+      <SettingModal isOpen={settingModalOpen} onClose={closeSettingModal} />
     </>
   );
 };
