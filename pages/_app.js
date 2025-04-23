@@ -100,6 +100,7 @@ export default function App({ Component, pageProps }) {
                     "/foreign-futures",
                     "/system",
                     "/counseling",
+                    "/notice",
                   ].includes(router.pathname) ? (
                     <Component {...pageProps} />
                   ) : (

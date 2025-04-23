@@ -32,6 +32,7 @@ const Header = () => {
         { path: "foreign-futures", txt: t("해외선물") },
         { path: "system", txt: t("거래 시스템") },
         { path: "counseling", txt: t("고객센터") },
+        { path: "notice", txt: t("공지사항") },
       ];
 
   // 테마 토글
