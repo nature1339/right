@@ -20,7 +20,10 @@ export default function CompanyIntro() {
 
   if (siteName === "ocbc") {
     return <CompanyIntroOcbc />;
+  } else if (siteName === "pnc") {
+    return <CompanyIntroOcbc />;
   }
+
 
   return <></>;
 }
