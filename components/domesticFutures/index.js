@@ -1,4 +1,5 @@
 import DomesticFuturesOcbc from "./domesticFuturesOcbc";
+import DomesticFuturesPnc from "./domesticFuturesPnc";
 import { useRouter } from "next/navigation";
 import userStore from "store/user";
 import { getSiteName } from "@utils/common";
@@ -19,6 +20,9 @@ export default function domesticFutures() {
 
   if (siteName === "ocbc") {
     return <DomesticFuturesOcbc />;
+  }
+  if (siteName === "pnc") {
+    return <DomesticFuturesPnc />;
   }
 
   return <></>;

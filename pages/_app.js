@@ -33,9 +33,16 @@ export default function App({ Component, pageProps }) {
     html.classList.remove("pnc_html");
     if (siteName === "pnc") {
       if (
-        ["/", "/login", "/join", "/company-intro", "/notice"].includes(
-          router.pathname
-        )
+        [
+          "/",
+          "/login",
+          "/join",
+          "/company-intro",
+          "/notice",
+          "/domestic-futures",
+          "/foreign-futures",
+          "/system",
+        ].includes(router.pathname)
       ) {
         html.classList.add("pnc_html");
       }

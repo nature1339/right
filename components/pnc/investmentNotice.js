@@ -1,18 +1,23 @@
-import React from 'react';
+import React from "react";
 
 const InvestmentNotice = () => {
   return (
-    <section className="my-8">
+    <section className="my-16">
       <div className="w-full max-w-[1180px] mx-auto px-4 md:px-0">
         <div className="bg-[#F9F9F9] rounded-xl grid grid-cols-1 md:grid-cols-2 relative overflow-hidden">
-
           {/* 투자유의사항 텍스트 영역 */}
           <div className="p-6">
             <h2 className="text-lg font-bold mb-2">투자유의사항</h2>
             <p className="text-sm text-gray-500">
-              당사는 금융투자상품에 관하여 충분히 설명할 의무가 있으며, 투자자는 투자에 앞서 그러한 설명을 충분히 들으시기 바랍니다. 금융투자상품은 운용 결과와 투자원금의 손실이 발생할 수 있으며 그 손실은 투자자에게 귀속됩니다.
+              당사는 금융투자상품에 관하여 충분히 설명할 의무가 있으며, 투자자는
+              투자에 앞서 그러한 설명을 충분히 들으시기 바랍니다. 금융투자상품은
+              운용 결과와 투자원금의 손실이 발생할 수 있으며 그 손실은
+              투자자에게 귀속됩니다.
             </p>
-            <a href="#" className="inline-block mt-4 text-sm font-semibold hover:underline">
+            <a
+              href="#"
+              className="inline-block mt-4 text-sm font-semibold hover:underline"
+            >
               자세히 보기 &gt;
             </a>
           </div>
@@ -47,7 +52,6 @@ const InvestmentNotice = () => {
               </button>
             </div>
           </div>
-
         </div>
       </div>
     </section>

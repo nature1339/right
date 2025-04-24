@@ -1,4 +1,5 @@
 import ForeignFuturesOcbc from "./foreignFuturesOcbc";
+import ForeignFuturesPnc from "./foreignFuturesPnc";
 import { useRouter } from "next/navigation";
 import userStore from "store/user";
 import { getSiteName } from "@utils/common";
@@ -19,6 +20,9 @@ export default function foreignFutures() {
 
   if (siteName === "ocbc") {
     return <ForeignFuturesOcbc />;
+  }
+  if (siteName === "pnc") {
+    return <ForeignFuturesPnc />;
   }
 
   return <></>;

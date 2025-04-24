@@ -1,4 +1,5 @@
 import SystemOcbc from "./systemOcbc";
+import SystemPnc from "./systemPnc";
 import { useRouter } from "next/navigation";
 import userStore from "store/user";
 import { getSiteName } from "@utils/common";
@@ -19,6 +20,10 @@ export default function CompanyIntro() {
 
   if (siteName === "ocbc") {
     return <SystemOcbc />;
+  }
+
+  if (siteName === "pnc") {
+    return <SystemPnc />;
   }
 
   return <></>;
