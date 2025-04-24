@@ -32,7 +32,14 @@ export default function App({ Component, pageProps }) {
     const html = document.documentElement;
     html.classList.remove("pnc_html");
     if (siteName === "pnc") {
-      html.classList.add("pnc_html");
+      if (
+        ["/", "/login", "/join", "/company-intro", "/notice"].includes(
+          router.pathname
+        )
+      ) {
+        html.classList.add("pnc_html");
+      }
+      // html.classList.add("pnc_html");
     }
   }, [siteName]);
 
@@ -83,6 +90,17 @@ export default function App({ Component, pageProps }) {
                   {
                     // 로그인 회원가입 페이지
                     "pb-0": ["/join", "/login"].includes(router.pathname),
+                  },
+                  {
+                    "pt-[100px]":
+                      siteName == "pnc" &&
+                      [
+                        "/orders",
+                        "/cash",
+                        "/history",
+                        "/ovnight",
+                        "/counseling",
+                      ].includes(router.pathname),
                   }
                 )}
               >
