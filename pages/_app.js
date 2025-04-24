@@ -17,7 +17,7 @@ import clsx from "clsx";
 
 import "@css/index.css";
 import "@css/mainHead.css";
-import "@css/pnc.css";
+// import "@css/pnc.css";
 import "@utils/in18";
 import "@css/sing.css";
 import "@css/daterangepicker.css";
@@ -82,7 +82,7 @@ export default function App({ Component, pageProps }) {
               <div
                 className={clsx(
                   theme,
-                  siteName == "pnc" ? "pnc_wrap" : "body_wrap",
+                  "body_wrap",
                   // 다크모드 사용 안함 페이지
                   [
                     "/",
