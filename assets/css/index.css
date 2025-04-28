@@ -3,6 +3,12 @@
 
 @tailwind utilities;
 
+:root {
+  --twc-primary: 210 100% 50%; /* 파란색 */
+  --twc-primary-opacity: 0.8; /* 투명도 */
+  --tw-bg-opacity:1;
+}
+
 @layer utilities {
   .react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
     background-color: #d1d5db !important;

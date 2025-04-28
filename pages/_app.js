@@ -17,7 +17,7 @@ import clsx from "clsx";
 
 import "@css/index.css";
 import "@css/mainHead.css";
-// import "@css/pnc.css";
+import "@css/pnc.css";
 import "@utils/in18";
 import "@css/sing.css";
 import "@css/daterangepicker.css";
@@ -32,22 +32,22 @@ export default function App({ Component, pageProps }) {
     const html = document.documentElement;
     html.classList.remove("pnc_html");
     if (siteName === "pnc") {
-      if (
-        [
-          "/",
-          "/login",
-          "/join",
-          "/company-intro",
-          "/notice",
-          "/domestic-futures",
-          "/foreign-futures",
-          "/system",
-        ].includes(router.pathname)
-      ) {
+    //   if (
+    //     [
+    //       "/",
+    //       "/login",
+    //       "/join",
+    //       "/company-intro",
+    //       "/notice",
+    //       "/domestic-futures",
+    //       "/foreign-futures",
+    //       "/system",
+    //     ].includes(router.pathname)
+    //   ) {
         html.classList.add("pnc_html");
       }
       // html.classList.add("pnc_html");
-    }
+    // }
   }, [siteName]);
 
   const [queryClient] = useState(
@@ -82,7 +82,7 @@ export default function App({ Component, pageProps }) {
               <div
                 className={clsx(
                   theme,
-                  "body_wrap",
+                  `body_wrap`,                  
                   // 다크모드 사용 안함 페이지
                   [
                     "/",

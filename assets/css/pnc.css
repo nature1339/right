@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 .pnc_html {
-  font-size: 16px;
+  /* font-size: 16px; */
 }
 .pnc_html * {
   font-family: "Pretendard Variable" !important;
 }
-.pnc_html a,
+/* .pnc_html a,
 .pnc_html button {
   border: inherit;
 }
@@ -17,4 +17,12 @@
 .pnc_html input[type="number"],
 .pnc_html input[type="password"] {
   background: inherit;
+} */
+
+.pnc_html .body_wrap header{
+  box-shadow:none;
+}
+
+.pnc_html .body_wrap{
+  /* background:#f3f5f7; */
 }

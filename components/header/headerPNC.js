@@ -77,7 +77,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full pt-0 md:pt-4 z-50 text-[25.6px]">
+      <header className="fixed top-0 left-0 w-full pt-0 md:pt-4 z-50 text-[25.6px] shadow-none">
         <div className="w-full max-w-[1180px] mx-auto px-[16px] py-[16px] bg-white md:rounded-full shadow-md">
           <div className="flex items-center justify-between">
             {/* 왼쪽: 로고 + 메뉴 */}
