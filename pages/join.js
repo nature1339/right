@@ -75,7 +75,6 @@ const SignupForm = () => {
 
   const onJoin = (e) => {
     e.preventDefault(); // Prevent page refresh
-    console.log(formValues);
 
     const {
       userid,

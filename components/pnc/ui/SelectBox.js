@@ -44,8 +44,11 @@ const SelectBox = ({ id, value, option, name, onChange, className }) => {
                 onClick={() => {
                   setSelect(item);
                   setActive(false);
-                  const event = new Event("change", { bubbles: true });
-                  selectRef.current.dispatchEvent(event);
+                  if (selectRef.current) {
+                    selectRef.current.value = item.value; // **선택된 값으로 직접 변경**
+                    const event = new Event("change", { bubbles: true });
+                    selectRef.current.dispatchEvent(event);
+                  }
                 }}
                 className="flex items-center h-[40px] px-[12px] hover:bg-[#F3F3F3] hover:text-[#324580] text-[#131313]"
               >

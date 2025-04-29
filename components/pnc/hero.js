@@ -21,17 +21,40 @@ const Hero = () => {
         muted
         playsInline
         // className="absolute top-0 left-0 w-full h-full object-cover z-1"
-        className="absolute w-full h-full top-0 left-0 object-cover"
+        className={`${
+          index === 0 ? "opacity-100" : "opacity-0"
+        } transition absolute w-full h-full top-0 left-0 object-cover`}
       >
-        <source src="/pnc/pnc_slider_video.mp4" type="video/mp4" />
+        <source src={`/pnc/pnc_slider_video0.mp4`} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      {/* <img
-        src="/assets/bg_img.png"
-        alt="메인 배경"
-        className="absolute inset-0 w-full h-full object-cover opacity-80 z-0"
-      /> */}
-      {/* pt-[38vh] md:pt-[45vh] sm:pt-[60vh] */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        // className="absolute top-0 left-0 w-full h-full object-cover z-1"
+        className={`${
+          index === 1 ? "opacity-100" : "opacity-0"
+        } transition absolute w-full h-full top-0 left-0 object-cover`}
+      >
+        <source src={`/pnc/pnc_slider_video1.mp4`} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        // className="absolute top-0 left-0 w-full h-full object-cover z-1"
+        className={`${
+          index === 2 ? "opacity-100" : "opacity-0"
+        } transition absolute w-full h-full top-0 left-0 object-cover`}
+      >
+        <source src={`/pnc/pnc_slider_video2.mp4`} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
       <div className="relative z-10 w-full max-w-[1180px] mx-auto text-center sm:text-left md:pb-[32px]">
         {/* 데스크탑 타이틀 */}
         <div className="hidden sm:block mb-[16px]">

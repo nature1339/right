@@ -20,11 +20,11 @@ const themeStore = create(
           };
         }),
       setTheme: (theme) => set(() => ({ theme })),
-    }),
-    {
-      name: "theme-data",
-      partialize: (state) => ({ theme: state.theme }),
-    }
+    })
+    // {
+    //   name: "theme-data",
+    //   partialize: (state) => ({ theme: state.theme }),
+    // }
   )
 );
 

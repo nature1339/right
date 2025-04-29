@@ -11,7 +11,7 @@ import InvestmentNotice from "@components/pnc/investmentNotice";
 
 export default function IntroPNC() {
   return (
-    <>
+    <div className="bg-white">
       <Hero />
       <Services />
       <Events />
@@ -19,6 +19,6 @@ export default function IntroPNC() {
       <Notices />
       <InvestmentNotice />
       <FooterPNC />
-    </>
+    </div>
   );
 }

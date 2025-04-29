@@ -32,22 +32,8 @@ export default function App({ Component, pageProps }) {
     const html = document.documentElement;
     html.classList.remove("pnc_html");
     if (siteName === "pnc") {
-      //   if (
-      //     [
-      //       "/",
-      //       "/login",
-      //       "/join",
-      //       "/company-intro",
-      //       "/notice",
-      //       "/domestic-futures",
-      //       "/foreign-futures",
-      //       "/system",
-      //     ].includes(router.pathname)
-      //   ) {
       html.classList.add("pnc_html");
     }
-    // html.classList.add("pnc_html");
-    // }
   }, [siteName]);
 
   const [queryClient] = useState(

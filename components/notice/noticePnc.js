@@ -6,7 +6,7 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 const NoticePnc = () => {
   const [activeTap, setActiveTap] = useState(1);
   return (
-    <div className="w-full">
+    <div className="w-full bg-white">
       {/* 헤더 배경 섹션 */}
       <div
         className="relative h-[266px] md:h-[428px] w-full bg-cover bg-center flex items-end justify-center mb-[32px] md:mb-[64px]"

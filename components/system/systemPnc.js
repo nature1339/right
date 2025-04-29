@@ -46,7 +46,7 @@ export default function SystemPnc() {
         <title>거래시스템: PNC</title>
         <link rel="shortcut icon" href="favicon_pnckr.com.ico" />
       </Head>
-      <div className="w-full">
+      <div className="w-full bg-white">
         {/* 헤더 배경 섹션 */}
         <div
           className="relative h-[266px] md:h-[428px] w-full bg-cover bg-center flex items-end justify-center mb-[32px] md:mb-[64px]"
