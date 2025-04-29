@@ -2,18 +2,18 @@ import React from "react";
 
 const FooterPNC = () => {
   return (
-    <footer className="bg-[#F9F9F9] py-8 border-t border-gray-200">
-      <div className="w-full max-w-[1180px] mx-auto px-4 md:px-0 text-sm text-gray-600">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-6">
+    <footer className="bg-[#F9F9F9] py-[32px] border-solid border-t border-gray-200">
+      <div className="w-full max-w-[1180px] mx-auto px-[16px] md:px-0 text-[14px] text-gray-600">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-[24px]">
           {/* 왼쪽: 회사 정보 */}
           <div>
             <img
               src="/assets/logo_pnc.png"
               alt="PNC"
-              className="h-8 mb-4 grayscale opacity-60"
+              className="h-[32px] mb-[16px] grayscale opacity-60"
             />
 
-            <nav className="mb-2 flex flex-wrap gap-2">
+            <nav className="mb-[8px] flex flex-wrap gap-[8px]">
               <a href="#" className="font-semibold">
                 회사소개
               </a>
@@ -40,7 +40,7 @@ const FooterPNC = () => {
               049514
             </p>
 
-            <p className="mt-4 text-gray-400 text-xs">
+            <p className="mt-[16px] text-gray-400 text-[12px]">
               Copyright © PNC. All rights reserved
             </p>
           </div>
@@ -48,7 +48,7 @@ const FooterPNC = () => {
           {/* 오른쪽: 관련사이트 드롭다운 */}
           <div className="relative inline-block order-last md:order-none">
             <select
-              className="border border-gray-300 rounded text-sm appearance-none bg-white pl-3 pr-10 py-2"
+              className="border border-solid border-gray-300 rounded text-[14px] appearance-none bg-white pl-[12px] pr-[40px] py-[8px]"
               style={{ width: "152px" }}
             >
               <option>관련사이트</option>
@@ -56,7 +56,7 @@ const FooterPNC = () => {
             <img
               src="/assets/Footer_dropdown.png"
               alt="dropdown"
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none"
+              className="absolute right-[12px] top-1/2 transform -translate-y-1/2 pointer-events-none"
             />
           </div>
         </div>

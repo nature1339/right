@@ -32,21 +32,21 @@ export default function App({ Component, pageProps }) {
     const html = document.documentElement;
     html.classList.remove("pnc_html");
     if (siteName === "pnc") {
-    //   if (
-    //     [
-    //       "/",
-    //       "/login",
-    //       "/join",
-    //       "/company-intro",
-    //       "/notice",
-    //       "/domestic-futures",
-    //       "/foreign-futures",
-    //       "/system",
-    //     ].includes(router.pathname)
-    //   ) {
-        html.classList.add("pnc_html");
-      }
-      // html.classList.add("pnc_html");
+      //   if (
+      //     [
+      //       "/",
+      //       "/login",
+      //       "/join",
+      //       "/company-intro",
+      //       "/notice",
+      //       "/domestic-futures",
+      //       "/foreign-futures",
+      //       "/system",
+      //     ].includes(router.pathname)
+      //   ) {
+      html.classList.add("pnc_html");
+    }
+    // html.classList.add("pnc_html");
     // }
   }, [siteName]);
 
@@ -82,7 +82,7 @@ export default function App({ Component, pageProps }) {
               <div
                 className={clsx(
                   theme,
-                  `body_wrap`,                  
+                  `body_wrap`,
                   // 다크모드 사용 안함 페이지
                   [
                     "/",
@@ -99,7 +99,7 @@ export default function App({ Component, pageProps }) {
                     "pb-0": ["/join", "/login"].includes(router.pathname),
                   },
                   {
-                    "pt-[100px]":
+                    "!pt-[100px]":
                       siteName == "pnc" &&
                       [
                         "/orders",

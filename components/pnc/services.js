@@ -1,20 +1,20 @@
-import React from 'react';
+import React from "react";
 
 const services = [
   {
-    img: '/assets/service_mts.png',
-    title: 'MTS',
-    desc: 'Mobile Trading System',
+    img: "/assets/service_mts.png",
+    title: "MTS",
+    desc: "Mobile Trading System",
   },
   {
-    img: '/assets/service_hts.png',
-    title: 'HTS',
-    desc: 'Home Trading System',
+    img: "/assets/service_hts.png",
+    title: "HTS",
+    desc: "Home Trading System",
   },
   {
-    img: '/assets/service_wts.png',
-    title: 'WTS',
-    desc: 'Web Trading System',
+    img: "/assets/service_wts.png",
+    title: "WTS",
+    desc: "Web Trading System",
   },
 ];
 
@@ -37,11 +37,18 @@ const Services = () => {
       <div className="w-full h-[185px]">
         <div className="max-w-[1180px] mx-auto h-full flex items-start md:items-center">
           {services.map((item, idx) => (
-            <div key={idx} className="flex-1 flex flex-col md:flex-row justify-center md:items-center gap-1">
-              <img src={item.img} alt={item.title} className="block max-w-[101px] md:max-w-[128px] h-auto mx-auto md:mx-0" />
-              <div className='text-center md:text-left'>
-                <h3 className="text-lg font-bold">{item.title}</h3>
-                <p className="text-sm text-gray-500">{item.desc}</p>
+            <div
+              key={idx}
+              className="flex-1 flex flex-col md:flex-row justify-center md:items-center gap-[4px]"
+            >
+              <img
+                src={item.img}
+                alt={item.title}
+                className="block max-w-[101px] md:max-w-[128px] h-auto mx-auto md:mx-0"
+              />
+              <div className="text-center md:text-left">
+                <h3 className="text-[18px] font-bold">{item.title}</h3>
+                <p className="text-[14px] text-gray-500">{item.desc}</p>
               </div>
             </div>
           ))}

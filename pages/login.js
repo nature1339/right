@@ -64,17 +64,17 @@ const Login = () => {
 
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center bg-[#f3f5f7] px-4 py-20 md:py-40">
-        <div className="w-full max-w-[580px] px-4">
-          <h2 className="text-[44px] font-bold text-center mb-16">
+      <div className="min-h-screen flex items-center justify-center bg-[#f3f5f7] px-[16px] py-[80px] md:py-[160px] auth-wrap">
+        <div className="w-full max-w-[580px] px-[16px]">
+          <h2 className="text-[44px] font-bold text-center mb-[64px]">
             {t("로그인")}
           </h2>
 
           <form id="loginForm" onSubmit={handleLogin} autoComplete="off">
-            <div className="mb-4">
+            <div className="mb-[16px]">
               <label
                 htmlFor="username"
-                className="block text-[19px] font-semibold mb-2 text-[#131313]"
+                className="block text-[19px] font-semibold mb-[8px] text-[#131313]"
               >
                 아이디
               </label>
@@ -83,14 +83,14 @@ const Login = () => {
                 name="loginId"
                 type="text"
                 placeholder={t("아이디를 입력하세요.")}
-                className="w-full px-3 font-light h-[64px] border rounded-md text-[18px] leading-none focus:outline-none focus:border-indigo-500 bg-white placeholder-[#A3A3A3]"
+                className="w-full border rounded-md"
               />
             </div>
 
-            <div className="mb-5">
+            <div className="mb-[20px]">
               <label
                 htmlFor="password"
-                className="block text-[19px] font-semibold mb-2 text-[#131313]"
+                className="block text-[19px] font-semibold mb-[8px] text-[#131313]"
               >
                 비밀번호
               </label>
@@ -99,19 +99,17 @@ const Login = () => {
                 name="password"
                 type="password"
                 placeholder={t("비밀번호 입력하세요.")}
-                className="w-full px-3 font-light h-[64px] border rounded-md text-[18px] leading-none focus:outline-none focus:border-indigo-500 bg-white placeholder-[#A3A3A3]"
+                className="w-full border rounded-md"
               />
             </div>
 
-            <div className="mb-10 flex items-center">
-            <label
-                htmlFor="remember"
-                className="flex items-center"
-              >
-              {/* <input type="checkbox" id="remember" className="mr-2" /> */}
-              <Checkbox id="remember" />
-              <span className="text-base text-[#131313] ml-2">
-                아이디 저장</span>
+            <div className="mb-[40px] flex items-center">
+              <label htmlFor="remember" className="flex items-center">
+                {/* <input type="checkbox" id="remember" className="mr-[8px]" /> */}
+                <Checkbox id="remember" onChange={() => false} />
+                <span className="text-[16px] text-[#131313] ml-[8px]">
+                  아이디 저장
+                </span>
               </label>
             </div>
 
@@ -123,12 +121,12 @@ const Login = () => {
             </button>
           </form>
 
-          <div className="flex justify-center items-center text-base text-gray-600 mt-6">
+          <div className="flex justify-center items-center text-[16px] text-gray-600 mt-[24px]">
             <a href="/join" className="hover:underline">
               회원가입
             </a>
-            <div className="mx-6 h-4 w-px bg-[#D9D9D9]"></div>
-            <div className="space-x-2">
+            <div className="mx-[24px] h-[16px] w-px bg-[#D9D9D9]"></div>
+            <div className="space-x-[8px]">
               <a href="#" className="hover:underline">
                 아이디 찾기
               </a>

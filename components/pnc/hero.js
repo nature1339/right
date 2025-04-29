@@ -32,10 +32,10 @@ const Hero = () => {
         className="absolute inset-0 w-full h-full object-cover opacity-80 z-0"
       /> */}
       {/* pt-[38vh] md:pt-[45vh] sm:pt-[60vh] */}
-      <div className="relative z-10 w-full max-w-[1180px] mx-auto  text-center sm:text-left md:pb-8">
+      <div className="relative z-10 w-full max-w-[1180px] mx-auto text-center sm:text-left md:pb-[32px]">
         {/* 데스크탑 타이틀 */}
-        <div className="hidden sm:block mb-6">
-          <h1 className="font-bold text-[clamp(1.5rem,3vw,3rem)] leading-tight md:pl-4">
+        <div className="hidden sm:block mb-[16px]">
+          <h1 className="font-bold text-[50px] leading-tight md:pl-[16px]">
             <span className="text-white">P</span>
             <span style={{ color: "rgba(255, 255, 255, 0.78)" }}>
               ittsburgh{" "}
@@ -51,8 +51,8 @@ const Hero = () => {
         </div>
 
         {/* 모바일 타이틀 */}
-        <div className="block sm:hidden text-left mb-10 px-4">
-          <h1 className="font-bold text-[1.6rem] leading-snug max-w-[330px]">
+        <div className="block sm:hidden text-left mb-[40px] px-[16px]">
+          <h1 className="font-bold text-[26px] leading-snug max-w-[330px]">
             <span className="text-white">P</span>
             <span style={{ color: "rgba(255, 255, 255, 0.78)" }}>
               ittsburgh{" "}
@@ -69,11 +69,11 @@ const Hero = () => {
         </div>
 
         {/* 슬라이드 박스 */}
-        <div className="hidden sm:flex items-center justify-between rounded-xl h-[104px] bg-black/70 px-6">
-          <div className="flex items-center gap-6 text-sm">
-            <div className="flex items-center gap-2 font-medium">
+        <div className="hidden sm:flex items-center justify-between rounded-xl h-[104px] bg-black/70 px-[24px]">
+          <div className="flex items-center gap-[24px] text-[14px]">
+            <div className="flex items-center gap-[8px] font-medium">
               {slides.map((num, i) => (
-                <div key={i} className="flex items-center gap-2">
+                <div key={i} className="flex items-center gap-[8px]">
                   <span
                     className={`transition-colors duration-300 ${
                       i === index ? "text-red-500" : "text-white/60"
@@ -83,8 +83,8 @@ const Hero = () => {
                   </span>
                   <div
                     className={`${
-                      i === index ? "w-6" : "w-0"
-                    } w-6 h-px bg-gray-500 transition-all`}
+                      i === index ? "w-[24px]" : "w-0"
+                    } h-px bg-gray-500 transition-all`}
                   />
                 </div>
               ))}
@@ -99,7 +99,7 @@ const Hero = () => {
           <div className="flex gap-[8px]">
             <button
               onClick={handlePrev}
-              className="w-8 h-8 flex items-center justify-center hover:opacity-80"
+              className="w-[32px] h-[32px] flex items-center justify-center hover:opacity-80"
             >
               <img
                 src="/assets/btn_left.png"
@@ -109,7 +109,7 @@ const Hero = () => {
             </button>
             <button
               onClick={handleNext}
-              className="w-8 h-8 flex items-center justify-center hover:opacity-80"
+              className="w-[32px] h-[32px] flex items-center justify-center hover:opacity-80"
             >
               <img
                 src="/assets/btn_right.png"

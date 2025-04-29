@@ -34,7 +34,7 @@ export default function ForeignFuturesPnc() {
       <div className="w-full">
         {/* 헤더 배경 섹션 */}
         <div
-          className="relative h-[266px] md:h-[428px] w-full bg-cover bg-center flex items-end justify-center mb-8 md:mb-16"
+          className="relative h-[266px] md:h-[428px] w-full bg-cover bg-center flex items-end justify-center mb-[32px] md:mb-[64px]"
           style={{
             backgroundImage: `url('/assets/bg-ff.jpg')`,
           }}
@@ -52,7 +52,7 @@ export default function ForeignFuturesPnc() {
           </div>
         </div>
         <div className="max-w-[1212px] px-[16px] mx-auto text-[#131313]">
-          <div className="mt-24 bg-[#F9F9F9] rounded-2xl p-10 flex flex-col md:flex-row items-center gap-10 md:gap-20">
+          <div className="mt-[96px] bg-[#F9F9F9] rounded-2xl p-[40px] flex flex-col md:flex-row items-center gap-[40px] md:gap-[80px]">
             <div className="flex-1 w-full md:w-auto">
               <div
                 className="w-full md:w-[400px] h-[114px] bg-cover bg-center rounded-2xl"
@@ -63,7 +63,7 @@ export default function ForeignFuturesPnc() {
             </div>
             <div className="flex-auto">
               <div className="text-[24px] font-semibold">해외선물이란?</div>
-              <p className="mt-2 text-[18px] text-[#636363]">
+              <p className="mt-[8px] text-[18px] text-[#636363]">
                 한국거래소(KRX) D에 상장된 지수, 통화, 금리, 주식, 상품(금,
                 돈육)등을 기초자산으로 하는 파생상품으로서, 미래일정 시점에 특정
                 상품을 현재 합의한 가격으로, 미리 사거나 파는 계약을 통하여
@@ -71,12 +71,12 @@ export default function ForeignFuturesPnc() {
               </p>
             </div>
           </div>
-          <div className="p-7 md:p-16 md:border border-[#E3E3E3] rounded-3xl text-[#131313] text-[18px] mt-0 md:mt-24">
-            <h3 className="mt-4 md:mt-0 font-semibold md:font-extrabold text-[24px] md:text-[40px] text-center">
+          <div className="p-[28px] md:p-[64px] md:border border-[#E3E3E3] rounded-3xl text-[#131313] text-[18px] mt-auto md:mt-[96px]">
+            <h3 className="mt-[16px] md:mt-auto font-semibold md:font-extrabold text-[24px] md:text-[40px] text-center">
               해외선물 주요 특징
             </h3>
             {info.map((item, idx) => (
-              <div className="mt-6 md:mt-14 flex justify-center items-center gap-5 md:gap-12 w-full">
+              <div className="mt-[24px] md:mt-[56px] flex justify-center items-center gap-[20px] md:gap-[48px] w-full">
                 <div className="hidden md:block font-extrabold text-[100px] text-[#E3E3E3]">
                   {idx + 1}
                 </div>
@@ -93,7 +93,7 @@ export default function ForeignFuturesPnc() {
                   <div className="text-[18px] md:text-[32px] font-medium md:font-bold">
                     {item.h4}
                   </div>
-                  <p className="mt-2 md:mt-4 text-[14px] md:text-[16px] md:text-[18px] text-[#636363]">
+                  <p className="mt-[8px] md:mt-[16px] text-[14px] md:text-[16px] md:text-[18px] text-[#636363]">
                     {item.p}
                   </p>
                 </div>

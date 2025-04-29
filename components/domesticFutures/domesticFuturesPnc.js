@@ -38,7 +38,7 @@ export default function DomesticFuturesPnc() {
       <div className="w-full">
         {/* 헤더 배경 섹션 */}
         <div
-          className="relative h-[266px] md:h-[428px] w-full bg-cover bg-center flex items-end justify-center mb-8 md:mb-16"
+          className="relative h-[266px] md:h-[428px] w-full bg-cover bg-center flex items-end justify-center mb-[32px] md:mb-[64px]"
           style={{
             backgroundImage: `url('/assets/bg-domestic-futures.jpg')`,
           }}
@@ -56,13 +56,13 @@ export default function DomesticFuturesPnc() {
           </div>
         </div>
         <div className="max-w-[1212px] px-[16px] mx-auto text-[#131313]">
-          <div className="mt-8 md:mt-28 text-[24px] md:text-[48px] font-semibold text-center">
+          <div className="mt-[32px] md:mt-[112px] text-[24px] md:text-[48px] font-semibold text-center">
             미래를 예측하는 새로운 투자수단을 찾고 있다면!
           </div>
-          <div className="mt-2 text-[18px] md:text-[24px] text-center">
+          <div className="mt-[8px] text-[18px] md:text-[24px] text-center">
             코스피지수, 달려원, 채권 등 현물 선물 옵션 거래 가능
           </div>
-          <div className="mt-24 bg-[#F9F9F9] rounded-2xl p-10 flex flex-col md:flex-row items-center gap-10 md:gap-20">
+          <div className="mt-[96px] bg-[#F9F9F9] rounded-2xl p-[40px] flex flex-col md:flex-row items-center gap-[40px] md:gap-[80px]">
             <div className="flex-1 w-full md:w-auto">
               <div
                 className="w-full md:w-[400px] h-[114px] bg-cover bg-center rounded-2xl"
@@ -73,7 +73,7 @@ export default function DomesticFuturesPnc() {
             </div>
             <div className="flex-auto">
               <div className="text-[24px] font-semibold">국내선물이란?</div>
-              <p className="mt-2 text-[18px] text-[#636363]">
+              <p className="mt-[8px] text-[18px] text-[#636363]">
                 한국거래소(KRX)에 상장된 지수, 통화, 금리, 주식,
                 상품(금,돈육)등을 기초자산으로 하는 파생상품으로서, 미래
                 일정시점에 특정 상품을 현재 합의한 가격으로, 미리 사거나 파는
@@ -82,11 +82,11 @@ export default function DomesticFuturesPnc() {
               </p>
             </div>
           </div>
-          <div className="p-4 md:p-16 border border-[#E3E3E3] rounded-3xl text-[#131313] text-[18px] mt-12">
-            <h3 className="mt-2 md:mt-0 font-semibold md:font-extrabold text-[24px] md:text-[40px] text-center">
+          <div className="p-[16px] md:p-[64px] border border-[#E3E3E3] rounded-3xl text-[#131313] text-[18px] mt-[48px]">
+            <h3 className="mt-[8px] md:mt-auto font-semibold md:font-extrabold text-[24px] md:text-[40px] text-center">
               국내선물 거래 상품
             </h3>
-            <div className="pt-5 pb-10 md:pt-10 md:pb-20 flex flex-col md:flex-row-reverse items-center gap-8 md:gap-20 border-b border-[#ECECF4]">
+            <div className="pt-[20px] pb-[40px] md:pt-[40px] md:pb-[80px] flex flex-col md:flex-row-reverse items-center gap-[32px] md:gap-[80px] border-b border-[#ECECF4]">
               <div className="flex-1 w-full md:w-auto">
                 <div
                   className="w-full md:w-[400px] h-[210px] bg-cover bg-center rounded-2xl"
@@ -99,7 +99,7 @@ export default function DomesticFuturesPnc() {
                 <div className="text-[20px] md:text-[32px] font-bold">
                   KOSPI200
                 </div>
-                <p className="mt-4 text-[16px] md:text-[18px] text-[#636363]">
+                <p className="mt-[16px] text-[16px] md:text-[18px] text-[#636363]">
                   금융투자회사에서 국내선물 거래할 수 있도록 제공해드리는 상품은
                   KOSP1200 단 하나로 진행 드리고 있습니다. 추후 더욱 성장하며
                   많은 상품들을 제공 해드릴 수 있도록 노력하고 있으니 당사에
@@ -107,7 +107,7 @@ export default function DomesticFuturesPnc() {
                 </p>
               </div>
             </div>
-            <div className="pt-10 md:py-20 pb-2 md:pb-0 md:pb-10 flex flex-col md:flex-row items-center gap-8 md:gap-20">
+            <div className="pt-[40px] md:py-[80px] pb-[8px] md:pb-0 md:pb-[40px] flex flex-col md:flex-row items-center gap-[32px] md:gap-[80px]">
               <div className="flex-1 w-full md:w-auto">
                 <div
                   className="w-full md:w-[400px] h-[210px] bg-cover bg-center rounded-2xl"
@@ -120,7 +120,7 @@ export default function DomesticFuturesPnc() {
                 <div className="text-[20px] md:text-[32px] font-bold">
                   코스피200 선물
                 </div>
-                <p className="mt-4 text-[16px] md:text-[18px] text-[#636363]">
+                <p className="mt-[16px] text-[16px] md:text-[18px] text-[#636363]">
                   코스피 200 선물은 유가증권시장본부에 상장된 주권 200 종목의
                   시가총액 기준으로 산출된 코스피 200 지수(산출기준시점
                   1990.01.03)를 거래대상으로 하는 상품입니다.
@@ -132,12 +132,12 @@ export default function DomesticFuturesPnc() {
               </div>
             </div>
           </div>
-          <div className="p-7 md:p-16 md:border border-[#E3E3E3] rounded-3xl text-[#131313] text-[18px] mt-0 md:mt-24">
-            <h3 className="mt-4 md:mt-0 font-semibold md:font-extrabold text-[24px] md:text-[40px] text-center">
+          <div className="p-[28px] md:p-[64px] md:border border-[#E3E3E3] rounded-3xl text-[#131313] text-[18px] mt-auto md:mt-[96px]">
+            <h3 className="mt-[16px] md:mt-auto font-semibold md:font-extrabold text-[24px] md:text-[40px] text-center">
               국내선물 주요 특징
             </h3>
             {info.map((item, idx) => (
-              <div className="mt-6 md:mt-14 flex justify-center items-center gap-5 md:gap-12 w-full">
+              <div className="mt-[24px] md:mt-[56px] flex justify-center items-center gap-[20px] md:gap-[48px] w-full">
                 <div className="hidden md:block font-extrabold text-[100px] text-[#E3E3E3]">
                   {idx + 1}
                 </div>
@@ -154,7 +154,7 @@ export default function DomesticFuturesPnc() {
                   <div className="text-[18px] md:text-[32px] font-medium md:font-bold">
                     {item.h4}
                   </div>
-                  <p className="mt-2 md:mt-4 text-[14px] md:text-[16px] md:text-[18px] text-[#636363]">
+                  <p className="mt-[8px] md:mt-[16px] text-[14px] md:text-[16px] md:text-[18px] text-[#636363]">
                     {item.p}
                   </p>
                 </div>

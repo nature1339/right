@@ -49,7 +49,7 @@ export default function SystemPnc() {
       <div className="w-full">
         {/* 헤더 배경 섹션 */}
         <div
-          className="relative h-[266px] md:h-[428px] w-full bg-cover bg-center flex items-end justify-center mb-8 md:mb-16"
+          className="relative h-[266px] md:h-[428px] w-full bg-cover bg-center flex items-end justify-center mb-[32px] md:mb-[64px]"
           style={{
             backgroundImage: `url('/assets/bg-sys.jpg')`,
           }}
@@ -67,21 +67,21 @@ export default function SystemPnc() {
           </div>
         </div>
         <div className="max-w-[1212px] px-[16px] mx-auto text-[#131313]">
-          <div className="mt-8 md:mt-28 text-[24px] md:text-[48px] font-semibold text-center">
+          <div className="mt-[32px] md:mt-[112px] text-[24px] md:text-[48px] font-semibold text-center">
             차세대 거래 플랫폼 원클릭 글로벌 투자
           </div>
-          <div className="mt-4 text-[18px] md:text-[24px] text-center">
+          <div className="mt-[16px] text-[18px] md:text-[24px] text-center">
             언제 어디서든 간편하고 신속하게 공간의 제약을 받지 않고 거래
           </div>
-          <div className="p-7 md:p-16 md:border border-[#E3E3E3] rounded-3xl text-[#131313] text-[18px] mt-0 md:mt-24">
-            <h3 className="hidden md:block mt-2 md:mt-0 font-semibold md:font-extrabold text-[24px] md:text-[40px] text-center">
+          <div className="p-[28px] md:p-[64px] md:border border-[#E3E3E3] rounded-3xl text-[#131313] text-[18px] mt-auto md:mt-[96px]">
+            <h3 className="hidden md:block mt-[8px] md:mt-auto font-semibold md:font-extrabold text-[24px] md:text-[40px] text-center">
               모든 매매시스템 지원
             </h3>
-            <div className="mt-0 md:mt-12 -mx-7 md:-mx-16 flex items-start md:items-center">
+            <div className="mt-auto md:mt-[48px] -mx-[28px] md:-mx-[64px] flex items-start md:items-center">
               {services.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex-1 flex flex-col justify-center md:items-center gap-1 border-l border-[#E3E3E3] first:border-l-0"
+                  className="flex-1 flex flex-col justify-center md:items-center gap-[4px] border-l border-[#E3E3E3] first:border-l-0"
                 >
                   <img
                     src={item.img}
@@ -90,7 +90,7 @@ export default function SystemPnc() {
                   />
                   <div className="text-center">
                     <h3 className="text-[24px] font-semibold">{item.title}</h3>
-                    <p className="mt-2 text-[16px] text-[#A3A3A3] px-4">
+                    <p className="mt-[8px] text-[16px] text-[#A3A3A3] px-[16px]">
                       {item.desc}
                     </p>
                   </div>
@@ -98,12 +98,12 @@ export default function SystemPnc() {
               ))}
             </div>
           </div>
-          <div className="p-7 md:p-16 md:border border-[#E3E3E3] rounded-3xl text-[#131313] text-[18px] mt-0 md:mt-24">
-            <h3 className="mt-2 md:mt-0 font-semibold md:font-extrabold text-[24px] md:text-[40px] text-center">
+          <div className="p-[28px] md:p-[64px] md:border border-[#E3E3E3] rounded-3xl text-[#131313] text-[18px] mt-auto md:mt-[96px]">
+            <h3 className="mt-[8px] md:mt-auto font-semibold md:font-extrabold text-[24px] md:text-[40px] text-center">
               주요 특징
             </h3>
             {info.map((item, idx) => (
-              <div className="mt-6 md:mt-14 flex justify-center items-center gap-5 md:gap-12 w-full">
+              <div className="mt-[24px] md:mt-[56px] flex justify-center items-center gap-[20px] md:gap-[48px] w-full">
                 <div className="hidden md:block font-extrabold text-[100px] text-[#E3E3E3]">
                   {idx + 1}
                 </div>
@@ -120,7 +120,7 @@ export default function SystemPnc() {
                   <div className="text-[18px] md:text-[32px] font-medium md:font-bold">
                     {item.h4}
                   </div>
-                  <p className="mt-2 md:mt-4 text-[14px] md:text-[16px] md:text-[18px] text-[#636363]">
+                  <p className="mt-[8px] md:mt-[16px] text-[14px] md:text-[16px] md:text-[18px] text-[#636363]">
                     {item.p}
                   </p>
                 </div>

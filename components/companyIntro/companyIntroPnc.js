@@ -7,7 +7,7 @@ const CompanyIntroPnc = () => {
     <div className="w-full">
       {/* 헤더 배경 섹션 */}
       <div
-        className="relative h-[266px] md:h-[428px] w-full bg-cover bg-center flex items-end justify-center mb-8 md:mb-16"
+        className="relative h-[266px] md:h-[428px] w-full bg-cover bg-center flex items-end justify-center mb-[32px] md:mb-[64px]"
         style={{
           backgroundImage: `url('/assets/companyIntroduce_bg_img.png')`,
         }}
@@ -17,10 +17,10 @@ const CompanyIntroPnc = () => {
             회사소개
           </h1>
         </div>
-        <div className="relative z-10 w-full max-w-[1180px] flex text-white text-lg font-medium pb-4">
+        <div className="relative z-10 w-full max-w-[1180px] flex text-white text-[18px] font-medium pb-[16px]">
           <div className={`relative flex-1 ${activeTap === 0 ? "z-10" : ""}`}>
             <button
-              className={`cursor-pointer w-full h-[48px] md:h-[64px] bg-white/10 backdrop-blur-sm ${
+              className={`cursor-pointer w-full h-[48px] md:h-[64px] bg-white/10 backdrop-blur-sm border-solid ${
                 activeTap === 0
                   ? "border-2 border-white"
                   : "border border-white/40"
@@ -36,7 +36,7 @@ const CompanyIntroPnc = () => {
             }`}
           >
             <button
-              className={`cursor-pointer w-full h-[48px] md:h-[64px] bg-white/10 backdrop-blur-sm border ${
+              className={`cursor-pointer w-full h-[48px] md:h-[64px] bg-white/10 backdrop-blur-sm border-solid border ${
                 activeTap === 1
                   ? "border-2 border-white"
                   : "border border-white/40"
@@ -48,7 +48,7 @@ const CompanyIntroPnc = () => {
           </div>
           <div className={`relative flex-1 ${activeTap === 2 ? "z-10" : ""}`}>
             <button
-              className={`cursor-pointer w-full h-[48px] md:h-[64px] bg-white/10 backdrop-blur-sm border ${
+              className={`cursor-pointer w-full h-[48px] md:h-[64px] bg-white/10 backdrop-blur-sm border-solid border ${
                 activeTap === 2
                   ? "border-2 border-white"
                   : "border border-white/40"
@@ -62,21 +62,21 @@ const CompanyIntroPnc = () => {
       </div>
 
       {activeTap === 0 && (
-        <section className="max-w-[1180px] mx-auto px-4 md:px-0">
+        <section className="max-w-[1180px] mx-auto px-[16px] md:px-0">
           <h2 className="text-[60px] md:text-[100px] font-extrabold text-[#F3F3F3] border-b border-[#E3E3E3] overflow-hidden h-[67px] md:h-[112px]">
             Greeting
           </h2>
-          <div className="flex mt-10 md:mt-20 md:pb-14 flex-col md:flex-row">
-            <div className="md:w-2/5 md:pl-12 md:pr-24 pb-6 md:pb-0">
-              <h3 className="text-2xl md:text-[2.25rem] font-medium leading-snug">
+          <div className="flex mt-[40px] md:mt-[80px] md:pb-[56px] flex-col md:flex-row">
+            <div className="md:w-2/5 md:pl-[48px] md:pr-[96px] pb-[24px] md:pb-0">
+              <h3 className="text-[24px] md:text-[36px] font-medium leading-snug">
                 존경하는 고객여러분, 반갑습니다.
               </h3>
-              <p className="text-lg text-[#636363] font-normal mt-3 md:mt-6 pr-1">
+              <p className="text-[18px] text-[#636363] font-normal mt-[12px] md:mt-[24px] pr-[4px]">
                 먼저 PNC 금융 투자그룹에 많은 사랑과 성원을 보내주시는 고객
                 여러분께 깊은 감사 말씀을 드립니다.
               </p>
             </div>
-            <div className="md:w-3/5 text-lg text-[#131313] flex flex-col gap-4 md:gap-8 md:pr-12">
+            <div className="md:w-3/5 text-[18px] text-[#131313] flex flex-col gap-[16px] md:gap-[32px] md:pr-[48px]">
               <p>
                 PNC 금융 투자그룹은 자본 시장 국내, 외 선물을 통한 성장 발전을
                 지원하며 차별화된 자산 관리 서비스를 제공해 드리는 금융 투자
@@ -117,18 +117,18 @@ const CompanyIntroPnc = () => {
       )}
 
       {activeTap === 1 && (
-        <section className="max-w-[1180px] mx-auto px-4 md:px-0">
+        <section className="max-w-[1180px] mx-auto px-[16px] md:px-0">
           <h2 className="text-[60px] md:text-[100px] font-extrabold text-[#F3F3F3] border-b border-[#E3E3E3] overflow-hidden h-[67px] md:h-[112px]">
             Business
           </h2>
-          <div className="flex mt-10 md:mt-20 md:pb-14 flex-col md:flex-row">
-            <div className="md:w-2/5 md:pl-12 md:pr-24 pb-6 md:pb-0">
-              <h3 className="text-2xl md:text-[2.25rem] font-medium leading-snug">
+          <div className="flex mt-[40px] md:mt-[80px] md:pb-[56px] flex-col md:flex-row">
+            <div className="md:w-2/5 md:pl-[48px] md:pr-[96px] pb-[24px] md:pb-0">
+              <h3 className="text-[24px] md:text-[36px] font-medium leading-snug">
                 PNC의 사업영역을 <br />
                 소개합니다.
               </h3>
             </div>
-            <div className="relative md:w-3/5 flex flex-col gap-4 md:gap-8 md:pr-12">
+            <div className="relative md:w-3/5 flex flex-col gap-[16px] md:gap-[32px] md:pr-[48px]">
               <div
                 className="relative rounded-2xl overflow-hidden h-[280px] md:h-[410px] w-full bg-cover bg-center"
                 style={{
@@ -136,18 +136,18 @@ const CompanyIntroPnc = () => {
                 }}
               >
                 <div
-                  className="absolute inset-0 w-full h-full text-white flex flex-col justify-end p-8"
+                  className="absolute inset-0 w-full h-full text-white flex flex-col justify-end p-[32px]"
                   style={{
                     background:
                       "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%)",
                   }}
                 >
-                  <h4 className="text-xl md:text-[32px] font-semibold md:font-bold leading-snug">
+                  <h4 className="text-[20px] md:text-[32px] font-semibold md:font-bold leading-snug">
                     국내 선물 · 옵션
                     <br />
                     중개업무
                   </h4>
-                  <p className="mt-2 text-lg md:text-xl font-normal md:font-medium">
+                  <p className="mt-[8px] text-[18px] md:text-[20px] font-normal md:font-medium">
                     선물 · 옵션 거래등의 수탁, 중개, 주선, 대리, 결제, 정산 업무
                   </p>
                 </div>
@@ -159,17 +159,17 @@ const CompanyIntroPnc = () => {
                 }}
               >
                 <div
-                  className="absolute inset-0 w-full h-full text-white flex flex-col justify-end p-8"
+                  className="absolute inset-0 w-full h-full text-white flex flex-col justify-end p-[32px]"
                   style={{
                     background:
                       "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%)",
                   }}
                 >
-                  <h4 className="text-xl md:text-[32px] font-semibold md:font-bold leading-snug">
+                  <h4 className="text-[20px] md:text-[32px] font-semibold md:font-bold leading-snug">
                     해외 선물거래 <br />
                     중개업무
                   </h4>
-                  <p className="mt-2 text-lg md:text-xl font-normal md:font-medium">
+                  <p className="mt-[8px] text-[18px] md:text-[20px] font-normal md:font-medium">
                     해외 선물거래의 수탁, 중개, 주선, 대리, 선물옵션 거래등의
                     결제, 정산업무
                   </p>
@@ -182,17 +182,17 @@ const CompanyIntroPnc = () => {
                 }}
               >
                 <div
-                  className="absolute inset-0 w-full h-full text-white flex flex-col justify-end p-8"
+                  className="absolute inset-0 w-full h-full text-white flex flex-col justify-end p-[32px]"
                   style={{
                     background:
                       "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%)",
                   }}
                 >
-                  <h4 className="text-xl md:text-[32px] font-semibold md:font-bold leading-snug">
+                  <h4 className="text-[20px] md:text-[32px] font-semibold md:font-bold leading-snug">
                     HTS 고객응대 <br />
                     업무
                   </h4>
-                  <p className="mt-2 text-lg md:text-xl font-normal md:font-medium">
+                  <p className="mt-[8px] text-[18px] md:text-[20px] font-normal md:font-medium">
                     HTS 프로그램 오류 및 이용방법 등 문의 응대업무
                   </p>
                 </div>
@@ -204,24 +204,24 @@ const CompanyIntroPnc = () => {
                 }}
               >
                 <div
-                  className="absolute inset-0 w-full h-full text-white flex flex-col justify-end p-8"
+                  className="absolute inset-0 w-full h-full text-white flex flex-col justify-end p-[32px]"
                   style={{
                     background:
                       "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%)",
                   }}
                 >
-                  <h4 className="text-xl md:text-[32px] font-semibold md:font-bold leading-snug">
+                  <h4 className="text-[20px] md:text-[32px] font-semibold md:font-bold leading-snug">
                     전자자금 <br />
                     이체업무
                   </h4>
-                  <p className="mt-2 text-lg md:text-xl font-normal md:font-medium">
+                  <p className="mt-[8px] text-[18px] md:text-[20px] font-normal md:font-medium">
                     외국환업무 및 전자자금 이체업무
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="hidden md:flex flex-nowrap p-12 border border-[#E3E3E3] rounded-2xl justify-center mb-16">
+          <div className="hidden md:flex flex-nowrap p-[48px] border border-[#E3E3E3] rounded-2xl justify-center mb-[64px]">
             <div className="w-[300px] text-center mx-[-20px]">
               <div
                 className="max-w-[300px] pb-[100%] rounded-full bg-[#EBBCBC33] bg-no-repeat bg-center bg-blend-darken	"
@@ -229,7 +229,7 @@ const CompanyIntroPnc = () => {
                   backgroundImage: "url(/assets/bus-img-1.png)",
                 }}
               ></div>
-              <div className="mt-6 font-semibold text-2xl">Cost</div>
+              <div className="mt-[24px] font-semibold text-[24px]">Cost</div>
             </div>
             <div className="w-[300px] text-center mx-[-20px]">
               <div
@@ -238,7 +238,7 @@ const CompanyIntroPnc = () => {
                   backgroundImage: "url(/assets/bus-img-2.png)",
                 }}
               ></div>
-              <div className="mt-6 font-semibold text-2xl">People</div>
+              <div className="mt-[24px] font-semibold text-[24px]">People</div>
             </div>
             <div className="w-[300px] text-center mx-[-20px]">
               <div
@@ -247,7 +247,7 @@ const CompanyIntroPnc = () => {
                   backgroundImage: "url(/assets/bus-img-3.png)",
                 }}
               ></div>
-              <div className="mt-6 font-semibold text-2xl">System</div>
+              <div className="mt-[24px] font-semibold text-[24px]">System</div>
             </div>
             <div className="w-[300px] text-center mx-[-20px]">
               <div
@@ -256,10 +256,10 @@ const CompanyIntroPnc = () => {
                   backgroundImage: "url(/assets/bus-img-4.png)",
                 }}
               ></div>
-              <div className="mt-6 font-semibold text-2xl">Service</div>
+              <div className="mt-[24px] font-semibold text-[24px]">Service</div>
             </div>
           </div>
-          <div className="md:hidden p-12">
+          <div className="md:hidden p-[48px]">
             <div className="flex flex-nowrap justify-center">
               <div className="w-[300px] text-center mx-[-20px]">
                 <div
@@ -269,7 +269,7 @@ const CompanyIntroPnc = () => {
                     backgroundSize: "113px auto",
                   }}
                 ></div>
-                <div className="mt-6 font-semibold text-2xl">Cost</div>
+                <div className="mt-[24px] font-semibold text-[24px]">Cost</div>
               </div>
               <div className="w-[300px] text-center mx-[-20px]">
                 <div
@@ -279,10 +279,12 @@ const CompanyIntroPnc = () => {
                     backgroundSize: "113px auto",
                   }}
                 ></div>
-                <div className="mt-6 font-semibold text-2xl">People</div>
+                <div className="mt-[24px] font-semibold text-[24px]">
+                  People
+                </div>
               </div>
             </div>
-            <div className="flex flex-nowrap justify-center mt-10">
+            <div className="flex flex-nowrap justify-center mt-[40px]">
               <div className="w-[300px] text-center mx-[-20px]">
                 <div
                   className="max-w-[300px] pb-[100%] rounded-full bg-[#EBBCBC33] bg-no-repeat bg-center bg-blend-darken	"
@@ -291,7 +293,9 @@ const CompanyIntroPnc = () => {
                     backgroundSize: "113px auto",
                   }}
                 ></div>
-                <div className="mt-6 font-semibold text-2xl">System</div>
+                <div className="mt-[24px] font-semibold text-[24px]">
+                  System
+                </div>
               </div>
               <div className="w-[300px] text-center mx-[-20px]">
                 <div
@@ -301,7 +305,9 @@ const CompanyIntroPnc = () => {
                     backgroundSize: "113px auto",
                   }}
                 ></div>
-                <div className="mt-6 font-semibold text-2xl">Service</div>
+                <div className="mt-[24px] font-semibold text-[24px]">
+                  Service
+                </div>
               </div>
             </div>
           </div>
@@ -309,20 +315,20 @@ const CompanyIntroPnc = () => {
       )}
 
       {activeTap === 2 && (
-        <section className="max-w-[1180px] mx-auto px-4 md:px-0">
+        <section className="max-w-[1180px] mx-auto px-[16px] md:px-0">
           <h2 className="text-[60px] md:text-[100px] font-extrabold text-[#F3F3F3] border-b border-[#E3E3E3] overflow-hidden h-[67px] md:h-[112px]">
             Vision
           </h2>
-          <div className="flex mt-10 md:mt-20 md:pb-14 flex-col md:flex-row">
-            <div className="flex gap-6 flex-col md:flex-row">
-              <div className="bg-[#F9F9F9] p-8 rounded-2xl">
+          <div className="flex mt-[40px] md:mt-[8px]0 md:pb-[56px] flex-col md:flex-row">
+            <div className="flex gap-[24px] flex-col md:flex-row">
+              <div className="bg-[#F9F9F9] p-[32px] rounded-2xl">
                 <div
                   className="w-full h-[180px] md:h-[316px] bg-center bg-cover rounded-2xl"
                   style={{
                     backgroundImage: "url(/assets/vision-1.jpg)",
                   }}
                 ></div>
-                <div className="mt-6 mb-2 text-lg md:text-2xl font-semibold leading-snug">
+                <div className="mt-[24px] mb-[8px] text-[18px] md:text-[24px] font-semibold leading-snug">
                   바른 길을 걷는 투명한 경영
                 </div>
                 <p className="text-[18px] text-[#636363]">
@@ -330,14 +336,14 @@ const CompanyIntroPnc = () => {
                   사회적 정당성의 기반을 갖춥니다.
                 </p>
               </div>
-              <div className="bg-[#F9F9F9] p-8 rounded-2xl">
+              <div className="bg-[#F9F9F9] p-[32px] rounded-2xl">
                 <div
                   className="w-full h-[180px] md:h-[316px] bg-center bg-cover rounded-2xl"
                   style={{
                     backgroundImage: "url(/assets/vision-2.jpg)",
                   }}
                 ></div>
-                <div className="mt-6 mb-2 text-lg md:text-2xl font-semibold leading-snug">
+                <div className="mt-[24px] mb-[8px] text-[18px] md:text-[24px] font-semibold leading-snug">
                   책임을 다 하는 기업
                 </div>
                 <p className="text-[18px] text-[#636363]">
@@ -345,14 +351,14 @@ const CompanyIntroPnc = () => {
                   위치에서 책임을 다하며 신의를 지키도록 합니다.
                 </p>
               </div>
-              <div className="bg-[#F9F9F9] p-8 rounded-2xl">
+              <div className="bg-[#F9F9F9] p-[32px] rounded-2xl">
                 <div
                   className="w-full h-[180px] md:h-[316px] bg-center bg-cover rounded-2xl"
                   style={{
                     backgroundImage: "url(/assets/vision-3.jpg)",
                   }}
                 ></div>
-                <div className="mt-6 mb-2 text-lg md:text-2xl font-semibold leading-snug">
+                <div className="mt-[24px] mb-[8px] text-[18px] md:text-[24px] font-semibold leading-snug">
                   상생과 가치 창출
                 </div>
                 <p className="text-[18px] text-[#636363]">
@@ -363,9 +369,11 @@ const CompanyIntroPnc = () => {
             </div>
           </div>
           {/* pc */}
-          <div className="hidden md:block p-12 border border-[#E3E3E3] rounded-2xl mb-16">
-            <div className="font-extrabold text-[40px] mb-12">Our Strategy</div>
-            <div className="flex justify-center gap-16 flex-nowrap">
+          <div className="hidden md:block p-[48px] border border-[#E3E3E3] rounded-2xl mb-[64px]">
+            <div className="font-extrabold text-[40px] mb-[48px]">
+              Our Strategy
+            </div>
+            <div className="flex justify-center gap-[64px] flex-nowrap">
               <div className="w-[300px] text-center">
                 <div
                   className="max-w-[300px] pb-[100%] rounded-full bg-[#EBBCBC33] bg-no-repeat bg-center bg-blend-darken	"
@@ -373,8 +381,10 @@ const CompanyIntroPnc = () => {
                     backgroundImage: "url(/assets/vision-img-1.png)",
                   }}
                 ></div>
-                <div className="mt-6 font-semibold text-2xl">모니터링</div>
-                <p className="text-base text-[#A3A3A3] mt-2">
+                <div className="mt-[24px] font-semibold text-[24px]">
+                  모니터링
+                </div>
+                <p className="text-[16px] text-[#A3A3A3] mt-[8px]">
                   오류의 유/무
                   <br />
                   신속히 검토 후 대응
@@ -387,8 +397,8 @@ const CompanyIntroPnc = () => {
                     backgroundImage: "url(/assets/vision-img-2.png)",
                   }}
                 ></div>
-                <div className="mt-6 font-semibold text-2xl">신뢰</div>
-                <p className="text-base text-[#A3A3A3] mt-2">
+                <div className="mt-[24px] font-semibold text-[24px]">신뢰</div>
+                <p className="text-[16px] text-[#A3A3A3] mt-[8px]">
                   윤리 경영 바탕
                   <br />
                   대고객 신뢰관계 고양
@@ -401,8 +411,10 @@ const CompanyIntroPnc = () => {
                     backgroundImage: "url(/assets/vision-img-3.png)",
                   }}
                 ></div>
-                <div className="mt-6 font-semibold text-2xl">고객중심</div>
-                <p className="text-base text-[#A3A3A3] mt-2">
+                <div className="mt-[24px] font-semibold text-[24px]">
+                  고객중심
+                </div>
+                <p className="text-[16px] text-[#A3A3A3] mt-[8px]">
                   고객 니즈에 능동적이고 선대적인 대응,
                   <br />
                   고객 맞춤형 거래 환경 + 경쟁력 있는 시스템
@@ -411,7 +423,7 @@ const CompanyIntroPnc = () => {
             </div>
           </div>
           {/* 모바일 */}
-          <div className="md:hidden p-12">
+          <div className="md:hidden p-[48px]">
             <div className="flex flex-nowrap justify-center">
               <div className="w-[300px] text-center mx-[-20px]">
                 <div
@@ -421,8 +433,10 @@ const CompanyIntroPnc = () => {
                     backgroundSize: "113px auto",
                   }}
                 ></div>
-                <div className="mt-6 font-semibold text-xl">모니터링</div>
-                <p className="text-base text-[#A3A3A3] mt-2">
+                <div className="mt-[24px] font-semibold text-[20px]">
+                  모니터링
+                </div>
+                <p className="text-[16px] text-[#A3A3A3] mt-[8px]">
                   오류의 유/무
                   <br />
                   신속히 검토 후 대응
@@ -436,15 +450,15 @@ const CompanyIntroPnc = () => {
                     backgroundSize: "113px auto",
                   }}
                 ></div>
-                <div className="mt-6 font-semibold text-xl">신뢰</div>
-                <p className="text-base text-[#A3A3A3] mt-2">
+                <div className="mt-[24px] font-semibold text-[20px]">신뢰</div>
+                <p className="text-[16px] text-[#A3A3A3] mt-[8px]">
                   윤리 경영 바탕
                   <br />
                   대고객 신뢰관계 고양
                 </p>
               </div>
             </div>
-            <div className="flex flex-nowrap justify-center mt-10">
+            <div className="flex flex-nowrap justify-center mt-[40px]">
               <div className="w-[200px] text-center mx-[-20px]">
                 <div
                   className="max-w-[200px] pb-[100%] rounded-full bg-[#EBBCBC33] bg-no-repeat bg-center bg-blend-darken	"
@@ -453,8 +467,10 @@ const CompanyIntroPnc = () => {
                     backgroundSize: "113px auto",
                   }}
                 ></div>
-                <div className="mt-6 font-semibold text-xl">고객중심</div>
-                <p className="text-base text-[#A3A3A3] mt-2">
+                <div className="mt-[24px] font-semibold text-[20px]">
+                  고객중심
+                </div>
+                <p className="text-[16px] text-[#A3A3A3] mt-[8px]">
                   고객 니즈에 능동적이고 선대적인 대응, 고객 맞춤형 거래 환경 +
                   경쟁력 있는 시스템
                 </p>

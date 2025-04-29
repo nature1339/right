@@ -19,10 +19,48 @@
   background: inherit;
 } */
 
-.pnc_html .body_wrap header{
-  box-shadow:none;
+.pnc_html .body_wrap {
+  background: #ffffff;
+  padding-top: 0;
 }
 
-.pnc_html .body_wrap{
+.pnc_html .body_wrap.dark {
+  background: #181a20;
+}
+
+.pnc_html .body_wrap header {
+  box-shadow: none;
+  height: 0;
+}
+
+.pnc_html .body_wrap {
   /* background:#f3f5f7; */
+}
+
+.pnc_html .auth-wrap h2,
+.pnc_html .auth-wrap label {
+  color: #131313;
+}
+
+.pnc_html .auth-wrap input[type="text"],
+.pnc_html .auth-wrap input[type="number"],
+.pnc_html .auth-wrap input[type="password"] {
+  background: #ffffff !important;
+  border: 1px solid #e3e3e3 !important;
+  height: 64px;
+  padding: 0 18px;
+  font-size: 18px;
+  color: #131313;
+}
+
+.pnc_html .auth-wrap input[type="text"]::placeholder,
+.pnc_html .auth-wrap input[type="number"]::placeholder,
+.pnc_html .auth-wrap input[type="password"]::placeholder {
+  color: #a3a3a3;
+}
+
+.pnc_html .auth-wrap input[type="text"]:focus,
+.pnc_html .auth-wrap input[type="number"]:focus,
+.pnc_html .auth-wrap input[type="password"]:focus {
+  border-color: #324580 !important;
 }

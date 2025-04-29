@@ -77,7 +77,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full pt-0 md:pt-4 z-50 text-[25.6px] shadow-none">
+      <header className="fixed top-0 left-0 w-full pt-0 z-50 text-[25.6px] shadow-none mt-auto md:mt-[16px]">
         <div className="w-full max-w-[1180px] mx-auto px-[16px] py-[16px] bg-white md:rounded-full shadow-md">
           <div className="flex items-center justify-between">
             {/* 왼쪽: 로고 + 메뉴 */}
@@ -100,30 +100,12 @@ const Header = () => {
                     </button>
                   </li>
                 )}
-                {/* <button type="button" className="hover:text-blue-600">
-                  회사소개
-                </button>
-                <button type="button" className="hover:text-blue-600">
-                  국내선물
-                </button>
-                <button type="button" className="hover:text-blue-600">
-                  해외선물
-                </button>
-                <button type="button" className="hover:text-blue-600">
-                  고객센터
-                </button>
-                <button type="button" className="hover:text-blue-600">
-                  거래시스템
-                </button>
-                <button type="button" className="hover:text-blue-600">
-                  공지사항
-                </button> */}
               </ul>
             </div>
 
             {/* 오른쪽: 검색 / 언어 / 로그인 / 회원가입 / 햄버거 */}
             <div className="flex items-center gap-[8px]">
-              <div className="hidden sm:flex w-[74px] h-[24px] items-center justify-between px-2 text-sm text-gray-800">
+              <div className="hidden sm:flex w-[74px] h-[24px] items-center justify-between px-[8px] text-[14px] text-gray-800">
                 <img
                   src="/assets/ic_search.png"
                   alt="Search"
@@ -163,7 +145,7 @@ const Header = () => {
                     {userInfo.userid}
                   </div>
                   <div
-                    className="w-[48px] h-[48px] text-transparent text-0 bg-no-repeat bg-center bg-[url('/images/setting.svg')] cursor-pointer"
+                    className="w-[25px] h-[25px] text-transparent text-0 bg-no-repeat bg-center bg-[url('/images/setting.svg')] cursor-pointer"
                     onClick={() => openSettingModal()}
                   >
                     setting
@@ -174,13 +156,13 @@ const Header = () => {
                   {/* 로그인 전 */}
                   <a
                     href="/login"
-                    className="hidden sm:flex items-center h-[32px] px-[16px] text-sm border border-gray-300 rounded-full hover:bg-gray-100"
+                    className="hidden sm:flex items-center h-[32px] px-[16px] text-[14px] border border-gray-300 rounded-full hover:bg-gray-100 text-[#131313]"
                   >
                     {t("로그인")}
                   </a>
                   <a
                     href="/join"
-                    className="hidden sm:flex h-[32px] px-[16px] text-sm bg-[#2C3E94] text-white rounded-full items-center gap-1 hover:opacity-90"
+                    className="hidden sm:flex h-[32px] px-[16px] text-[14px] bg-[#2C3E94] text-white rounded-full items-center gap-[4px] hover:opacity-90"
                   >
                     <img
                       src="/assets/ic.png"
@@ -314,13 +296,13 @@ const Header = () => {
                 <>
                   <a
                     href="/login"
-                    className="flex justify-center items-center text-base font-semibold w-[108px] h-[48px] border border-[#C3C3C3] rounded-full"
+                    className="flex justify-center items-center text-[16px] font-semibold w-[108px] h-[48px] border border-[#C3C3C3] rounded-full text-[#131313]"
                   >
                     {t("로그인")}
                   </a>
                   <a
                     href="/join"
-                    className="mt-[8px] flex justify-center items-center gap-[4px] text-base text-white font-semibold w-[108px] h-[48px] border border-[#324580] rounded-full bg-[#324580]"
+                    className="mt-[8px] flex justify-center items-center gap-[4px] text-[16px] text-white font-semibold w-[108px] h-[48px] border border-[#324580] rounded-full bg-[#324580]"
                   >
                     <img
                       src="/assets/ic.png"
