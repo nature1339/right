@@ -7,25 +7,38 @@ const getInitialTheme = () => {
   return `${siteName}-light`;
 };
 
-const themeStore = create(
-  persist(
-    (set) => ({
-      theme: getInitialTheme(),
-      toggleTheme: () =>
-        set((state) => {
-          const siteName = getSiteName();
-          const [_, mode] = state.theme.split("-");
-          return {
-            theme: `${siteName}-${mode === "light" ? "dark" : "light"}`,
-          };
-        }),
-      setTheme: (theme) => set(() => ({ theme })),
-    })
-    // {
-    //   name: "theme-data",
-    //   partialize: (state) => ({ theme: state.theme }),
-    // }
-  )
-);
+// const themeStore = create(
+//   persist(
+//     (set) => ({
+//       theme: getInitialTheme(),
+//       toggleTheme: () =>
+//         set((state) => {
+//           const siteName = getSiteName();
+//           const [_, mode] = state.theme.split("-");
+//           return {
+//             theme: `${siteName}-${mode === "light" ? "dark" : "light"}`,
+//           };
+//         }),
+//       setTheme: (theme) => set(() => ({ theme })),
+//     }),
+//     {
+//       name: "theme-data",
+//       partialize: (state) => ({ theme: state.theme }),
+//     }
+//   )
+// );
+
+const themeStore = create((set) => ({
+  theme: getInitialTheme(),
+  toggleTheme: () =>
+    set((state) => {
+      const siteName = getSiteName();
+      const [_, mode] = state.theme.split("-");
+      return {
+        theme: `${siteName}-${mode === "light" ? "dark" : "light"}`,
+      };
+    }),
+  setTheme: (theme) => set(() => ({ theme })),
+}));
 
 export default themeStore;

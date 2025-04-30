@@ -976,21 +976,21 @@ select::-ms-expand {
   color: #ddd !important;
 }
 
-/* .body_wrap {
+.body_wrap {
   background: #e0e3eb;
   color: #505050;
   width: 100%;
   min-height: calc(100vh - 0rem) !important;
   padding-top: 8rem;
-} */
+}
 
-.body_wrap {
+/* .body_wrap {
   background: #fefefe;
   color: #505050;
   width: 100%;
   min-height: calc(100vh - 0rem) !important;
   padding-top: 8rem;
-}
+} */
 
 .body_wrap .body_wrap_inner {
   max-width: 256rem;
@@ -1288,7 +1288,6 @@ main section {
   border-radius: 0.5rem;
   padding: 1rem;
   height: 68.5rem;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 main section h3 {
