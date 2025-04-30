@@ -53,6 +53,6 @@ export const getSiteName = () => {
 
   // 로컬
   if (window.location.hostname.includes("localhost")) {
-    return "ocbc";
+    return "pnc";
   }
 };

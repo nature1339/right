@@ -225,7 +225,9 @@ export default function Ovnight() {
                 />
                 <label
                   htmlFor="overnight_switch"
-                  className="overnight_switch_label !bg-primary"
+                  className={`overnight_switch_label ${
+                    ov ? "!bg-primary" : ""
+                  }`}
                 >
                   <span className="on_off_btn"></span>
                 </label>

@@ -707,8 +707,13 @@ select::-ms-expand {
 }
 
 /* overnight checking style */
+/* #overnight_switch + .overnight_switch_label {
+  background: #d1d5db;
+} */
+
 #overnight_switch:checked + .overnight_switch_label {
   background: #1772f8;
+
   /* border: 1px solid #ddd; */
 }
 
