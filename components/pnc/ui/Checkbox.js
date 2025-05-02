@@ -15,7 +15,7 @@ const Checkbox = ({ id, onChange }) => {
         }}
       />
       <div
-        className={`w-[20px] h-[20px] border rounded-[4px] ${
+        className={`w-[20px] h-[20px] border rounded-[4px] border-solid ${
           active ? "bg-[#324580] border-[#324580]" : "bg-white border-[#C3C3C3]"
         }`}
       >

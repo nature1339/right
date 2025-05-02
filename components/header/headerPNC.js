@@ -82,11 +82,13 @@ const Header = () => {
           <div className="flex items-center justify-between">
             {/* 왼쪽: 로고 + 메뉴 */}
             <div className="flex items-center gap-[16px]">
-              <img
-                src="/assets/logo_header.png"
-                alt="PNC Logo"
-                className="w-[81px] h-[24px]"
-              />
+              <a href="/" className="block">
+                <img
+                  src="/assets/logo_header.png"
+                  alt="PNC Logo"
+                  className="w-[81px] h-[24px] block"
+                />
+              </a>
               <ul className="hidden lg:flex gap-[24px] text-[14px] font-medium text-gray-800">
                 {gnbList.map((item, idx) => (
                   <li key={idx} className={"hover:text-blue-600 list-none"}>

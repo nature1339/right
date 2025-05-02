@@ -26,8 +26,8 @@ const SelectBox = ({ id, value, option, name, onChange, className }) => {
       </select>
       <div className={"relative text-[18px] " + className}>
         <div
-          className={`flex items-center justify-between w-full px-[12px] font-light h-[64px] border rounded-md focus:outline-none bg-white placeholder-[#A3A3A3] cursor-default text-[#131313] ${
-            active ? "border-[#434343]" : ""
+          className={`flex items-center justify-between w-full px-[12px] font-light h-[64px] border rounded-md focus:outline-none bg-white placeholder-[#A3A3A3] cursor-default text-[#131313] border-solid ${
+            active ? "border-[#434343]" : "border-[#e3e3e3]"
           }`}
           onClick={() => {
             setActive(!active);
@@ -37,7 +37,7 @@ const SelectBox = ({ id, value, option, name, onChange, className }) => {
           <IoIosArrowDown />
         </div>
         {active && (
-          <ul className="absolute left-0 top-full w-full max-h-[252px] bg-white border border-[#434343] rounded-md mt-[4px] overflow-auto">
+          <ul className="absolute left-0 top-full w-full max-h-[252px] bg-white border border-solid border-[#434343] rounded-md mt-[4px] overflow-auto">
             {option.map((item, idx) => (
               <li
                 key={idx}
